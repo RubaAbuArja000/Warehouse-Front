@@ -1,0 +1,33 @@
+@use '../../../theme/variables' as v;
+
+.app-header {
+  height: v.$header-height;
+  background: #fff;
+  border-bottom: 1px solid v.$gray-200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  flex-shrink: 0;
+}
+
+.page-title { font-size: 0.9375rem; font-weight: 600; color: v.$gray-900; }
+
+.header-right { display: flex; align-items: center; gap: 0.75rem; }
+
+.user-info { display: flex; align-items: center; gap: 0.625rem; }
+
+.user-avatar {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, v.$blue-600, #7c3aed);
+  border-radius: 50%;
+  color: white;
+  font-size: 0.75rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.user-meta {
+  display: flex; flex-direction: column; line-height: 1.2;
+  .user-name { font-size: 0.8125rem; font-weight: 600; color: v.$gray-900; }
+  .user-role { font-size: 0.7rem; color: v.$gray-500; }
+}

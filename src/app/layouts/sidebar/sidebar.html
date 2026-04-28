@@ -1,0 +1,20 @@
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-icon"><i class="pi pi-box"></i></div>
+    <span class="brand-name">Warehouse</span>
+  </div>
+
+  <nav class="sidebar-nav">
+    @for (item of navItems; track item.route) {
+      <a
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        class="nav-item"
+        [routerLinkActiveOptions]="{ exact: false }"
+      >
+        <i [class]="item.icon"></i>
+        <span>{{ item.label }}</span>
+      </a>
+    }
+  </nav>
+</aside>
