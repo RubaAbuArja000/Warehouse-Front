@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-warehouses',
   standalone: true,
   imports: [],
-  templateUrl: './warehouses.html',
-  styleUrl: './warehouses.scss',
+  templateUrl: './warehouses-page.html',
+  styleUrl: './warehouses-page.scss',
 })
 export class WarehousesComponent {}

@@ -8,7 +8,7 @@ export const routes: Routes = [
       {
         path: 'login',
         loadComponent: () =>
-          import('./(modules)/(login)/login').then((m) => m.LoginComponent),
+          import('./(modules)/(auth)/(login)/login-page').then((m) => m.LoginComponent),
       },
       { path: '', redirectTo: 'login', pathMatch: 'full' },
     ],
@@ -23,17 +23,17 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadComponent: () =>
-          import('./(modules)/(dashboard)/dashboard').then((m) => m.DashboardComponent),
+          import('./(modules)/(dashboard)/dashboard-page').then((m) => m.DashboardComponent),
       },
       {
         path: 'warehouses',
         loadComponent: () =>
-          import('./(modules)/(warehouses)/warehouses').then((m) => m.WarehousesComponent),
+          import('./(modules)/(warehouses)/warehouses-page').then((m) => m.WarehousesComponent),
       },
       {
         path: 'settings',
         loadComponent: () =>
-          import('./(modules)/(settings)/settings').then((m) => m.SettingsComponent),
+          import('./(modules)/(settings)/settings-page').then((m) => m.SettingsComponent),
       },
     ],
   },

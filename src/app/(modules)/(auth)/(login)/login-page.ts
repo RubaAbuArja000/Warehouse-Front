@@ -1,7 +1,7 @@
 import { Component, inject, signal, computed } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Auth } from '../../models/auth';
+import { Auth } from '../../../models/auth';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 
@@ -9,8 +9,8 @@ import { InputTextModule } from 'primeng/inputtext';
   selector: 'app-login',
   standalone: true,
   imports: [ReactiveFormsModule, ButtonModule, InputTextModule],
-  templateUrl: './login.html',
-  styleUrls: ['./login.scss'],
+  templateUrl: './login-page.html',
+  styleUrls: ['./login-page.scss'],
 })
 export class LoginComponent {
   private fb = inject(FormBuilder);
