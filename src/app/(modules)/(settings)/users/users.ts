@@ -30,8 +30,8 @@ const ROLE_SEVERITY: Record<UserRole, TagSeverity> = {
     TagModule, ToastModule, InputTextModule,
     IconFieldModule, InputIconModule,
   ],
-  templateUrl: './users.component.html',
-  styleUrl: './users.component.scss',
+  templateUrl: './users.html',
+  styleUrl: './users.scss',
 })
 export class UsersComponent implements OnInit {
   private userService = inject(UserService);

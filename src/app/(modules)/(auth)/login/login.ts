@@ -9,8 +9,8 @@ import { InputTextModule } from 'primeng/inputtext';
   selector: 'app-login',
   standalone: true,
   imports: [ReactiveFormsModule, ButtonModule, InputTextModule],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  templateUrl: './login.html',
+  styleUrls: ['./login.scss'],
 })
 export class LoginComponent implements OnInit {
   private fb = inject(FormBuilder);

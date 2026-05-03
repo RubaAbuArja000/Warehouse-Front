@@ -8,7 +8,7 @@ export const routes: Routes = [
       {
         path: 'login',
         loadComponent: () =>
-          import('./(modules)/(auth)/login/login.component').then((m) => m.LoginComponent),
+          import('./(modules)/(auth)/login/login').then((m) => m.LoginComponent),
       },
       { path: '', redirectTo: 'login', pathMatch: 'full' },
     ],
