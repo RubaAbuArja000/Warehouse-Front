@@ -9,7 +9,7 @@ import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
-import { UserService } from '../../../services/user.service';
+import { UserApiService } from '../../../services/api/user/user-api-service';
 import { User } from '../../../models/user.model';
 import { UserRole } from '../../../enums/user-role.enum';
 
@@ -34,7 +34,7 @@ const ROLE_SEVERITY: Record<UserRole, TagSeverity> = {
   styleUrl: './users-page.scss',
 })
 export class UsersComponent implements OnInit {
-  private userService = inject(UserService);
+  private userService = inject(UserApiService);
   private messageService = inject(MessageService);
 
   users: User[] = [];
