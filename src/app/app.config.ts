@@ -10,7 +10,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MessageService, ConfirmationService } from 'primeng/api';
 
 import { routes } from './routes';
-import { authInterceptor } from './(modules)/(auth)/auth';
+import { authInterceptor } from './models/auth';
 
 export const appConfig: ApplicationConfig = {
   providers: [

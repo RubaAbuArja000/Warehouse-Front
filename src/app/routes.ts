@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { authGuard } from './(modules)/(auth)/auth';
+import { authGuard } from './models/auth';
 
 export const routes: Routes = [
   {
@@ -8,7 +8,7 @@ export const routes: Routes = [
       {
         path: 'login',
         loadComponent: () =>
-          import('./(modules)/(auth)/login/login').then((m) => m.LoginComponent),
+          import('./(modules)/(login)/login').then((m) => m.LoginComponent),
       },
       { path: '', redirectTo: 'login', pathMatch: 'full' },
     ],

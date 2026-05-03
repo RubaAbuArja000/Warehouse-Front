@@ -1,4 +1,4 @@
-@use '../../../theme/variables' as v;
+@use '../../../../theme/variables' as v;
 
 .login-page {
   min-height: 100vh;
@@ -15,16 +15,31 @@
   position: relative;
   overflow: hidden;
 
-  &::before, &::after {
+  &::before,
+  &::after {
     content: '';
     position: absolute;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.04);
   }
-  &::before { width: 400px; height: 400px; top: -100px; right: -100px; }
-  &::after  { width: 300px; height: 300px; bottom: -80px; left: -80px; }
 
-  @media (max-width: 768px) { display: none; }
+  &::before {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    right: -100px;
+  }
+
+  &::after {
+    width: 300px;
+    height: 300px;
+    bottom: -80px;
+    left: -80px;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .brand-content {
@@ -43,12 +58,25 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.5rem;
-    .pi { font-size: 2rem; color: white; }
+
+    .pi {
+      font-size: 2rem;
+      color: white;
+    }
   }
 
-  h1 { font-size: 1.875rem; font-weight: 700; margin-bottom: 0.875rem; }
+  h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 0.875rem;
+  }
 
-  > p { font-size: 0.9rem; line-height: 1.65; opacity: 0.8; margin-bottom: 2rem; }
+  > p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    opacity: 0.8;
+    margin-bottom: 2rem;
+  }
 
   .brand-features {
     display: flex;
@@ -62,7 +90,11 @@
       gap: 0.625rem;
       font-size: 0.85rem;
       opacity: 0.9;
-      .pi { font-size: 0.875rem; color: #86efac; }
+
+      .pi {
+        font-size: 0.875rem;
+        color: #86efac;
+      }
     }
   }
 }
@@ -76,12 +108,25 @@
   background: #ffffff;
 }
 
-.form-wrapper { width: 100%; max-width: 400px; }
+.form-wrapper {
+  width: 100%;
+  max-width: 400px;
+}
 
 .form-header {
   margin-bottom: 2rem;
-  h2 { font-size: 1.625rem; font-weight: 700; color: v.$gray-900; margin-bottom: 0.35rem; }
-  p  { color: v.$gray-500; font-size: 0.875rem; }
+
+  h2 {
+    font-size: 1.625rem;
+    font-weight: 700;
+    color: v.$gray-900;
+    margin-bottom: 0.35rem;
+  }
+
+  p {
+    color: v.$gray-500;
+    font-size: 0.875rem;
+  }
 }
 
 .field {
@@ -114,26 +159,46 @@
 
     &.is-invalid {
       border-color: v.$red-500;
-      &:focus { box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12); }
+
+      &:focus {
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+      }
     }
 
-    &::placeholder { color: v.$gray-400; }
+    &::placeholder {
+      color: v.$gray-400;
+    }
   }
 }
 
 .input-with-icon {
   position: relative;
-  .p-inputtext { padding-right: 2.75rem; }
+
+  .p-inputtext {
+    padding-right: 2.75rem;
+  }
 
   .icon-btn {
     position: absolute;
-    right: 0; top: 0;
-    height: 42px; width: 42px;
-    display: flex; align-items: center; justify-content: center;
-    background: none; border: none; cursor: pointer;
+    right: 0;
+    top: 0;
+    height: 42px;
+    width: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
     color: v.$gray-400;
-    &:hover { color: v.$gray-700; }
-    .pi { font-size: 0.9rem; }
+
+    &:hover {
+      color: v.$gray-700;
+    }
+
+    .pi {
+      font-size: 0.9rem;
+    }
   }
 }
 
@@ -155,7 +220,11 @@
   padding: 0.7rem 0.875rem;
   margin-bottom: 1.25rem;
   font-size: 0.845rem;
-  .pi { font-size: 0.9rem; flex-shrink: 0; }
+
+  .pi {
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
 }
 
 .signin-btn.p-button {
@@ -177,14 +246,24 @@
   gap: 0.625rem;
   color: #1e40af;
 
-  > .pi { font-size: 0.875rem; margin-top: 2px; flex-shrink: 0; }
+  > .pi {
+    font-size: 0.875rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
 
-  > div > span { font-size: 0.775rem; font-weight: 600; display: block; margin-bottom: 0.35rem; }
+  > div > span {
+    font-size: 0.775rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.35rem;
+  }
 
   .hint-creds {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+
     code {
       font-size: 0.775rem;
       background: rgba(37, 99, 235, 0.1);
