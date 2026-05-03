@@ -9,8 +9,8 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MessageService, ConfirmationService } from 'primeng/api';
 
-import { routes } from './routes/app.routes';
-import { authInterceptor } from './core/interceptors/auth.interceptor';
+import { routes } from './routes';
+import { authInterceptor } from './(modules)/(auth)/auth';
 
 export const appConfig: ApplicationConfig = {
   providers: [
