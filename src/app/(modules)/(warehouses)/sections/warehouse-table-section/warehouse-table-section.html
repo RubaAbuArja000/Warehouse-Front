@@ -1,0 +1,76 @@
+<div class="card">
+  <p-table
+    [value]="state.filtered()"
+    [loading]="state.loading()"
+    [paginator]="true"
+    [rows]="10"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} warehouses"
+  >
+    <ng-template #caption>
+      <div class="table-toolbar">
+        <p-iconfield>
+          <p-inputicon styleClass="pi pi-search" />
+          <input
+            pInputText
+            type="text"
+            placeholder="Search..."
+            [ngModel]="state.query()"
+            (ngModelChange)="state.query.set($event)"
+          />
+        </p-iconfield>
+      </div>
+    </ng-template>
+
+    <ng-template #header>
+      <tr>
+        <th pSortableColumn="name">Name <p-sortIcon field="name" /></th>
+        <th pSortableColumn="address">Address <p-sortIcon field="address" /></th>
+        <th pSortableColumn="city">City <p-sortIcon field="city" /></th>
+        <th pSortableColumn="country">Country <p-sortIcon field="country" /></th>
+        <th class="col-actions">Actions</th>
+      </tr>
+    </ng-template>
+
+    <ng-template #body let-w>
+      <tr>
+        <td class="name-cell"><i class="pi pi-building"></i> {{ w.name }}</td>
+        <td class="muted">{{ w.address }}</td>
+        <td>{{ w.city }}</td>
+        <td>{{ w.country }}</td>
+        <td>
+          <div class="actions">
+            <p-button
+              icon="pi pi-pencil"
+              [text]="true"
+              [rounded]="true"
+              severity="info"
+              size="small"
+              (onClick)="state.openEdit(w)"
+            />
+            <p-button
+              icon="pi pi-trash"
+              [text]="true"
+              [rounded]="true"
+              severity="danger"
+              size="small"
+              (onClick)="state.delete(w)"
+            />
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template #emptymessage>
+      <tr>
+        <td colspan="5">
+          <div class="empty">
+            <i class="pi pi-building"></i>
+            <p>No warehouses found</p>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
