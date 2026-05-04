@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
-import { Warehouse, CreateWarehouseRequest, UpdateWarehouseRequest } from '../../../models/warehouse.model';
+import { Warehouse, CreateWarehouseRequest, UpdateWarehouseRequest } from './models/warehouse.model';
 
 @Injectable({ providedIn: 'root' })
 export class WarehouseApiService {

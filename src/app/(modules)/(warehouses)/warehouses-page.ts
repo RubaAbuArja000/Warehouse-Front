@@ -7,9 +7,9 @@ import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { WarehouseApiService } from '../../services/api/warehouse/warehouse-api-service';
-import { Warehouse } from '../../models/warehouse.model';
-import { WarehouseHeaderComponent } from './sections/warehouse-header/warehouse-header';
-import { WarehouseTableComponent } from './sections/warehouse-table/warehouse-table';
+import { Warehouse } from '../../services/api/warehouse/models/warehouse.model';
+import { WarehouseHeaderComponent } from './sections/warehouse-header-section/warehouse-header-section';
+import { WarehouseTableComponent } from './sections/warehouse-table-section/warehouse-table-section';
 
 @Component({
   selector: 'app-warehouses',

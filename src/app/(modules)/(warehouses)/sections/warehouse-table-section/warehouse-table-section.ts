@@ -5,7 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
-import { Warehouse } from '../../../../models/warehouse.model';
+import { Warehouse } from '../../../../services/api/warehouse/models/warehouse.model';
 
 @Component({
   selector: 'app-warehouse-table',
@@ -18,8 +18,8 @@ import { Warehouse } from '../../../../models/warehouse.model';
     IconFieldModule,
     InputIconModule,
   ],
-  templateUrl: './warehouse-table.html',
-  styleUrl: './warehouse-table.scss',
+  templateUrl: './warehouse-table-section.html',
+  styleUrl: './warehouse-table-section.scss',
 })
 export class WarehouseTableComponent {
   items = input.required<Warehouse[]>();
