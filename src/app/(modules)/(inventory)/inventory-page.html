@@ -1,0 +1,130 @@
+<p-toast />
+<p-confirmdialog />
+
+<div class="page">
+  <div class="page-header">
+    <div>
+      <h2>Inventory</h2>
+      <p>Manage warehouse items and stock levels</p>
+    </div>
+    <p-button label="New Item" icon="pi pi-plus" (onClick)="openCreate()" />
+  </div>
+
+  <div class="card">
+    <p-table
+      [value]="filtered()"
+      [loading]="loading()"
+      [paginator]="true"
+      [rows]="10"
+      [rowsPerPageOptions]="[10,25,50]"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} items"
+    >
+      <ng-template #caption>
+        <div class="table-toolbar">
+          <p-select
+            [options]="warehouseOptions()"
+            [ngModel]="filterWh()"
+            (ngModelChange)="filterWh.set($event)"
+            placeholder="All Warehouses"
+            [showClear]="true"
+            styleClass="wh-select"
+          />
+          <p-iconfield>
+            <p-inputicon styleClass="pi pi-search" />
+            <input pInputText type="text" placeholder="Search items..."
+              [ngModel]="query()" (ngModelChange)="query.set($event)" />
+          </p-iconfield>
+        </div>
+      </ng-template>
+
+      <ng-template #header>
+        <tr>
+          <th pSortableColumn="itemName">Item <p-sortIcon field="itemName" /></th>
+          <th>SKU</th>
+          <th pSortableColumn="warehouseName">Warehouse <p-sortIcon field="warehouseName" /></th>
+          <th pSortableColumn="quantity" class="col-num">Qty <p-sortIcon field="quantity" /></th>
+          <th pSortableColumn="costPrice" class="col-num">Cost <p-sortIcon field="costPrice" /></th>
+          <th pSortableColumn="msrpPrice" class="col-num">MSRP <p-sortIcon field="msrpPrice" /></th>
+          <th class="col-actions">Actions</th>
+        </tr>
+      </ng-template>
+
+      <ng-template #body let-item>
+        <tr>
+          <td class="item-name">{{ item.itemName }}</td>
+          <td class="muted sku">{{ item.skuCode || '—' }}</td>
+          <td><span class="wh-badge"><i class="pi pi-building"></i> {{ item.warehouseName }}</span></td>
+          <td class="col-num">
+            <span class="qty" [class.low]="item.quantity < 10">{{ item.quantity }}</span>
+          </td>
+          <td class="col-num muted">{{ item.costPrice | currency }}</td>
+          <td class="col-num muted">{{ item.msrpPrice != null ? (item.msrpPrice | currency) : '—' }}</td>
+          <td>
+            <div class="actions">
+              <p-button icon="pi pi-pencil" [text]="true" [rounded]="true" severity="info"   size="small" (onClick)="openEdit(item)" />
+              <p-button icon="pi pi-trash"  [text]="true" [rounded]="true" severity="danger" size="small" (onClick)="delete(item)" />
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template #emptymessage>
+        <tr><td colspan="7"><div class="empty"><i class="pi pi-box"></i><p>No items found</p></div></td></tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+<p-dialog
+  [header]="isEditing() ? 'Edit Item' : 'New Item'"
+  [visible]="showDialog()"
+  (visibleChange)="showDialog.set($event)"
+  [modal]="true"
+  [style]="{ width: '520px' }"
+>
+  <form [formGroup]="form" (ngSubmit)="save()" novalidate class="dialog-form">
+    <div class="field">
+      <label>Item Name *</label>
+      <input pInputText formControlName="itemName" placeholder="e.g. Safety Gloves" />
+    </div>
+    <div class="field">
+      <label>SKU Code</label>
+      <input pInputText formControlName="skuCode" placeholder="Optional SKU" />
+    </div>
+    <div class="field">
+      <label>Warehouse *</label>
+      <p-select
+        formControlName="warehouseId"
+        [options]="warehouseOptions()"
+        placeholder="Select warehouse"
+        styleClass="full-w"
+      />
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Quantity *</label>
+        <p-inputnumber formControlName="quantity" [min]="1" styleClass="full-w" />
+      </div>
+      <div class="field">
+        <label>Cost Price *</label>
+        <p-inputnumber formControlName="costPrice" mode="currency" currency="USD" styleClass="full-w" />
+      </div>
+    </div>
+    <div class="field">
+      <label>MSRP</label>
+      <p-inputnumber formControlName="msrpPrice" mode="currency" currency="USD" styleClass="full-w" />
+    </div>
+  </form>
+
+  <ng-template #footer>
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="showDialog.set(false)" />
+    <p-button
+      [label]="isEditing() ? 'Update' : 'Create'"
+      icon="pi pi-check"
+      [loading]="saving()"
+      [disabled]="form.invalid"
+      (onClick)="save()"
+    />
+  </ng-template>
+</p-dialog>
