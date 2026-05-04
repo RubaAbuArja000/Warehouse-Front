@@ -1,0 +1,66 @@
+@use '../../theme/variables' as v;
+
+.page { padding: 1.5rem; }
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+
+  h2 { font-size: 1.375rem; font-weight: 700; color: v.$gray-900; margin-bottom: 0.25rem; }
+  p  { font-size: 0.8125rem; color: v.$gray-500; }
+}
+
+.card {
+  background: #fff;
+  border: 1px solid v.$gray-200;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+
+.table-toolbar {
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.name-cell {
+  font-weight: 500;
+  color: v.$gray-900;
+  .pi { margin-right: 0.5rem; color: v.$blue-600; }
+}
+
+.muted { color: v.$gray-500; font-size: 0.8125rem; }
+
+.col-actions { width: 90px; text-align: center; }
+.actions { display: flex; gap: 0.25rem; justify-content: center; }
+
+.empty {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 3rem; color: v.$gray-400;
+  .pi { font-size: 2.5rem; margin-bottom: 0.75rem; }
+  p   { font-size: 0.875rem; }
+}
+
+.dialog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  label { font-size: 0.8125rem; font-weight: 500; color: v.$gray-700; }
+  input { width: 100%; }
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
