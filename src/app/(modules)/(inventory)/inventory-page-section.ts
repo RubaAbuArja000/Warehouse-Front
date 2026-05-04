@@ -14,7 +14,7 @@ import { WarehouseApiService } from '../../services/api/warehouse/warehouse-api-
 import { WarehouseItem } from '../../services/api/warehouse-item/models/warehouse-item.model';
 import { Warehouse } from '../../services/api/warehouse/models/warehouse.model';
 import { InventoryHeaderComponent } from './sections/inventory-header-section/inventory-header-section';
-import { InventoryTableComponent } from './sections/inventory-table/inventory-table';
+import { InventoryTableComponent } from './sections/inventory-table-section/inventory-table-section';
 
 @Component({
   selector: 'app-inventory',
@@ -31,8 +31,8 @@ import { InventoryTableComponent } from './sections/inventory-table/inventory-ta
     InventoryHeaderComponent,
     InventoryTableComponent,
   ],
-  templateUrl: './inventory-page.html',
-  styleUrl: './inventory-page.scss',
+  templateUrl: './inventory-page-section.html',
+  styleUrl: './inventory-page-section.scss',
   providers: [MessageService, ConfirmationService],
 })
 export class InventoryComponent implements OnInit {

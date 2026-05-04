@@ -19,8 +19,8 @@ interface SelectOption { label: string; value: number; }
     TableModule, ButtonModule, InputTextModule,
     IconFieldModule, InputIconModule, SelectModule,
   ],
-  templateUrl: './inventory-table.html',
-  styleUrl: './inventory-table.scss',
+  templateUrl: './inventory-table-section.html',
+  styleUrl: './inventory-table-section.scss',
 })
 export class InventoryTableComponent {
   items            = input.required<WarehouseItem[]>();
