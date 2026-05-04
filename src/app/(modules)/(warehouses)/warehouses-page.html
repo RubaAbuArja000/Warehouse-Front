@@ -1,24 +1,16 @@
 <div class="page">
-  <app-warehouse-header (addClicked)="openCreate()" />
-
-  <app-warehouse-table
-    [items]="filtered()"
-    [loading]="loading()"
-    [query]="query()"
-    (queryChange)="onQueryChange($event)"
-    (editWarehouse)="openEdit($event)"
-    (deleteWarehouse)="delete($event)"
-  />
+  <app-warehouse-header />
+  <app-warehouse-table />
 </div>
 
 <p-dialog
-  [header]="isEditing() ? 'Edit Warehouse' : 'New Warehouse'"
-  [visible]="showDialog()"
-  (visibleChange)="showDialog.set($event)"
+  [header]="state.isEditing() ? 'Edit Warehouse' : 'New Warehouse'"
+  [visible]="state.showDialog()"
+  (visibleChange)="state.showDialog.set($event)"
   [modal]="true"
   [style]="{ width: '480px' }"
 >
-  <form [formGroup]="form" (ngSubmit)="save()" novalidate class="dialog-form">
+  <form [formGroup]="state.form" (ngSubmit)="state.save()" novalidate class="dialog-form">
     <div class="field">
       <label>Name *</label>
       <input pInputText formControlName="name" placeholder="Warehouse name" />
@@ -43,13 +35,13 @@
   </form>
 
   <ng-template #footer>
-    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="showDialog.set(false)" />
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="state.showDialog.set(false)" />
     <p-button
-      [label]="isEditing() ? 'Update' : 'Create'"
+      [label]="state.isEditing() ? 'Update' : 'Create'"
       icon="pi pi-check"
-      [loading]="saving()"
-      [disabled]="form.invalid"
-      (onClick)="save()"
+      [loading]="state.saving()"
+      [disabled]="state.form.invalid"
+      (onClick)="state.save()"
     />
   </ng-template>
 </p-dialog>

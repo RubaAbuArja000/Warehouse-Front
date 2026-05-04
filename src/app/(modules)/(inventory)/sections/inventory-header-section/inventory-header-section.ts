@@ -1,5 +1,6 @@
-import { Component, output } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
+import { InventoryStateService } from '../../../../services/api/inventory/inventory-state.service';
 
 @Component({
   selector: 'app-inventory-header',
@@ -9,5 +10,5 @@ import { ButtonModule } from 'primeng/button';
   styleUrl: './inventory-header-section.scss',
 })
 export class InventoryHeaderComponent {
-  addClicked = output<void>();
+  protected state = inject(InventoryStateService);
 }

@@ -1,7 +1,7 @@
 <div class="card">
   <p-table
-    [value]="items()"
-    [loading]="loading()"
+    [value]="state.filtered()"
+    [loading]="state.loading()"
     [paginator]="true"
     [rows]="10"
     [rowsPerPageOptions]="[10, 25, 50]"
@@ -16,8 +16,8 @@
             pInputText
             type="text"
             placeholder="Search..."
-            [ngModel]="query()"
-            (ngModelChange)="queryChange.emit($event)"
+            [ngModel]="state.query()"
+            (ngModelChange)="state.query.set($event)"
           />
         </p-iconfield>
       </div>
@@ -47,16 +47,15 @@
               [rounded]="true"
               severity="info"
               size="small"
-              (onClick)="editWarehouse.emit(w)"
+              (onClick)="state.openEdit(w)"
             />
-
             <p-button
               icon="pi pi-trash"
               [text]="true"
               [rounded]="true"
               severity="danger"
               size="small"
-              (onClick)="deleteWarehouse.emit(w)"
+              (onClick)="state.delete(w)"
             />
           </div>
         </td>

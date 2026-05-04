@@ -1,27 +1,16 @@
 <div class="page">
-  <app-inventory-header (addClicked)="openCreate()" />
-
-  <app-inventory-table
-    [items]="filtered()"
-    [loading]="loading()"
-    [query]="query()"
-    [filterWh]="filterWh()"
-    [warehouseOptions]="warehouseOptions()"
-    (queryChange)="query.set($event)"
-    (filterWhChange)="filterWh.set($event)"
-    (editItem)="openEdit($event)"
-    (deleteItem)="delete($event)"
-  />
+  <app-inventory-header />
+  <app-inventory-table />
 </div>
 
 <p-dialog
-  [header]="isEditing() ? 'Edit Item' : 'New Item'"
-  [visible]="showDialog()"
-  (visibleChange)="showDialog.set($event)"
+  [header]="state.isEditing() ? 'Edit Item' : 'New Item'"
+  [visible]="state.showDialog()"
+  (visibleChange)="state.showDialog.set($event)"
   [modal]="true"
   [style]="{ width: '520px' }"
 >
-  <form [formGroup]="form" (ngSubmit)="save()" novalidate class="dialog-form">
+  <form [formGroup]="state.form" (ngSubmit)="state.save()" novalidate class="dialog-form">
     <div class="field">
       <label>Item Name *</label>
       <input pInputText formControlName="itemName" placeholder="e.g. Safety Gloves" />
@@ -34,7 +23,7 @@
       <label>Warehouse *</label>
       <p-select
         formControlName="warehouseId"
-        [options]="warehouseOptions()"
+        [options]="state.warehouseOptions()"
         placeholder="Select warehouse"
         styleClass="full-w"
       />
@@ -66,13 +55,13 @@
   </form>
 
   <ng-template #footer>
-    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="showDialog.set(false)" />
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="state.showDialog.set(false)" />
     <p-button
-      [label]="isEditing() ? 'Update' : 'Create'"
+      [label]="state.isEditing() ? 'Update' : 'Create'"
       icon="pi pi-check"
-      [loading]="saving()"
-      [disabled]="form.invalid"
-      (onClick)="save()"
+      [loading]="state.saving()"
+      [disabled]="state.form.invalid"
+      (onClick)="state.save()"
     />
   </ng-template>
 </p-dialog>

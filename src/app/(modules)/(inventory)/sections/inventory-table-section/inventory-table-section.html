@@ -1,7 +1,7 @@
 <div class="card">
   <p-table
-    [value]="items()"
-    [loading]="loading()"
+    [value]="state.filtered()"
+    [loading]="state.loading()"
     [paginator]="true"
     [rows]="10"
     [rowsPerPageOptions]="[10, 25, 50]"
@@ -11,9 +11,9 @@
     <ng-template #caption>
       <div class="table-toolbar">
         <p-select
-          [options]="warehouseOptions()"
-          [ngModel]="filterWh()"
-          (ngModelChange)="filterWhChange.emit($event)"
+          [options]="state.warehouseOptions()"
+          [ngModel]="state.filterWh()"
+          (ngModelChange)="state.filterWh.set($event)"
           placeholder="All Warehouses"
           [showClear]="true"
           styleClass="wh-select"
@@ -24,8 +24,8 @@
             pInputText
             type="text"
             placeholder="Search items..."
-            [ngModel]="query()"
-            (ngModelChange)="queryChange.emit($event)"
+            [ngModel]="state.query()"
+            (ngModelChange)="state.query.set($event)"
           />
         </p-iconfield>
       </div>
@@ -57,8 +57,8 @@
         <td class="col-num muted">{{ item.msrpPrice != null ? (item.msrpPrice | currency) : '—' }}</td>
         <td>
           <div class="actions">
-            <p-button icon="pi pi-pencil" [text]="true" [rounded]="true" severity="info"   size="small" (onClick)="editItem.emit(item)"   />
-            <p-button icon="pi pi-trash"  [text]="true" [rounded]="true" severity="danger" size="small" (onClick)="deleteItem.emit(item)" />
+            <p-button icon="pi pi-pencil" [text]="true" [rounded]="true" severity="info"   size="small" (onClick)="state.openEdit(item)"   />
+            <p-button icon="pi pi-trash"  [text]="true" [rounded]="true" severity="danger" size="small" (onClick)="state.delete(item)" />
           </div>
         </td>
       </tr>
