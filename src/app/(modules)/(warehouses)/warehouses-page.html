@@ -1,65 +1,14 @@
-<p-toast />
-<p-confirmdialog />
-
 <div class="page">
-  <div class="page-header">
-    <div>
-      <h2>Warehouses</h2>
-      <p>Manage warehouse locations</p>
-    </div>
-    <p-button label="New Warehouse" icon="pi pi-plus" (onClick)="openCreate()" />
-  </div>
+  <app-warehouse-header (addClicked)="openCreate()" />
 
-  <div class="card">
-    <p-table
-      [value]="filtered()"
-      [loading]="loading()"
-      [paginator]="true"
-      [rows]="10"
-      [rowsPerPageOptions]="[10,25,50]"
-      [showCurrentPageReport]="true"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} warehouses"
-    >
-      <ng-template #caption>
-        <div class="table-toolbar">
-          <p-iconfield>
-            <p-inputicon styleClass="pi pi-search" />
-            <input pInputText type="text" placeholder="Search..."
-              [ngModel]="query()" (ngModelChange)="query.set($event)" />
-          </p-iconfield>
-        </div>
-      </ng-template>
-
-      <ng-template #header>
-        <tr>
-          <th pSortableColumn="name">Name <p-sortIcon field="name" /></th>
-          <th pSortableColumn="address">Address <p-sortIcon field="address" /></th>
-          <th pSortableColumn="city">City <p-sortIcon field="city" /></th>
-          <th pSortableColumn="country">Country <p-sortIcon field="country" /></th>
-          <th class="col-actions">Actions</th>
-        </tr>
-      </ng-template>
-
-      <ng-template #body let-w>
-        <tr>
-          <td class="name-cell"><i class="pi pi-building"></i> {{ w.name }}</td>
-          <td class="muted">{{ w.address }}</td>
-          <td>{{ w.city }}</td>
-          <td>{{ w.country }}</td>
-          <td>
-            <div class="actions">
-              <p-button icon="pi pi-pencil" [text]="true" [rounded]="true" severity="info"   size="small" (onClick)="openEdit(w)" />
-              <p-button icon="pi pi-trash"  [text]="true" [rounded]="true" severity="danger" size="small" (onClick)="delete(w)" />
-            </div>
-          </td>
-        </tr>
-      </ng-template>
-
-      <ng-template #emptymessage>
-        <tr><td colspan="5"><div class="empty"><i class="pi pi-building"></i><p>No warehouses found</p></div></td></tr>
-      </ng-template>
-    </p-table>
-  </div>
+  <app-warehouse-table
+    [items]="filtered()"
+    [loading]="loading()"
+    [query]="query()"
+    (queryChange)="onQueryChange($event)"
+    (editWarehouse)="openEdit($event)"
+    (deleteWarehouse)="delete($event)"
+  />
 </div>
 
 <p-dialog
@@ -74,15 +23,18 @@
       <label>Name *</label>
       <input pInputText formControlName="name" placeholder="Warehouse name" />
     </div>
+
     <div class="field">
       <label>Address *</label>
       <input pInputText formControlName="address" placeholder="Street address" />
     </div>
+
     <div class="field-row">
       <div class="field">
         <label>City *</label>
         <input pInputText formControlName="city" placeholder="City" />
       </div>
+
       <div class="field">
         <label>Country *</label>
         <input pInputText formControlName="country" placeholder="Country" />
