@@ -1,0 +1,78 @@
+<div class="card">
+  <p-table
+    [value]="state.filtered()"
+    [loading]="state.loading()"
+    [paginator]="true"
+    [rows]="10"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} items"
+  >
+    <ng-template #caption>
+      <div class="table-toolbar">
+        <p-select
+          [options]="state.warehouseOptions()"
+          [ngModel]="state.filterWh()"
+          (ngModelChange)="state.filterWh.set($event)"
+          placeholder="All Warehouses"
+          [showClear]="true"
+          styleClass="wh-select"
+        />
+        <p-iconfield>
+          <p-inputicon styleClass="pi pi-search" />
+          <input
+            pInputText
+            type="text"
+            placeholder="Search items..."
+            [ngModel]="state.query()"
+            (ngModelChange)="state.query.set($event)"
+          />
+        </p-iconfield>
+      </div>
+    </ng-template>
+
+    <ng-template #header>
+      <tr>
+        <th pSortableColumn="itemName">Item <p-sortIcon field="itemName" /></th>
+        <th>SKU</th>
+        <th pSortableColumn="warehouseName">Warehouse <p-sortIcon field="warehouseName" /></th>
+        <th pSortableColumn="quantity"  class="col-num">Qty  <p-sortIcon field="quantity"  /></th>
+        <th pSortableColumn="costPrice" class="col-num">Cost <p-sortIcon field="costPrice" /></th>
+        <th pSortableColumn="msrpPrice" class="col-num">MSRP <p-sortIcon field="msrpPrice" /></th>
+        <th class="col-actions">Actions</th>
+      </tr>
+    </ng-template>
+
+    <ng-template #body let-item>
+      <tr>
+        <td class="item-name">{{ item.itemName }}</td>
+        <td class="muted sku">{{ item.skuCode || '—' }}</td>
+        <td>
+          <span class="wh-badge"><i class="pi pi-building"></i> {{ item.warehouseName }}</span>
+        </td>
+        <td class="col-num">
+          <span class="qty" [class.low]="item.quantity < 10">{{ item.quantity }}</span>
+        </td>
+        <td class="col-num muted">{{ item.costPrice | currency }}</td>
+        <td class="col-num muted">{{ item.msrpPrice != null ? (item.msrpPrice | currency) : '—' }}</td>
+        <td>
+          <div class="actions">
+            <p-button icon="pi pi-pencil" [text]="true" [rounded]="true" severity="info"   size="small" (onClick)="state.openEdit(item)"   />
+            <p-button icon="pi pi-trash"  [text]="true" [rounded]="true" severity="danger" size="small" (onClick)="state.delete(item)" />
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template #emptymessage>
+      <tr>
+        <td colspan="7">
+          <div class="empty">
+            <i class="pi pi-box"></i>
+            <p>No items found</p>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

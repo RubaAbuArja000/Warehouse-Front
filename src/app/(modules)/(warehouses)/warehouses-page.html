@@ -1,1 +1,47 @@
-<!-- warehouses page placeholder -->
+<div class="page">
+  <app-warehouse-header />
+  <app-warehouse-table />
+</div>
+
+<p-dialog
+  [header]="state.isEditing() ? 'Edit Warehouse' : 'New Warehouse'"
+  [visible]="state.showDialog()"
+  (visibleChange)="state.showDialog.set($event)"
+  [modal]="true"
+  [style]="{ width: '480px' }"
+>
+  <form [formGroup]="state.form" (ngSubmit)="state.save()" novalidate class="dialog-form">
+    <div class="field">
+      <label>Name *</label>
+      <input pInputText formControlName="name" placeholder="Warehouse name" />
+    </div>
+
+    <div class="field">
+      <label>Address *</label>
+      <input pInputText formControlName="address" placeholder="Street address" />
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>City *</label>
+        <input pInputText formControlName="city" placeholder="City" />
+      </div>
+
+      <div class="field">
+        <label>Country *</label>
+        <input pInputText formControlName="country" placeholder="Country" />
+      </div>
+    </div>
+  </form>
+
+  <ng-template #footer>
+    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="state.showDialog.set(false)" />
+    <p-button
+      [label]="state.isEditing() ? 'Update' : 'Create'"
+      icon="pi pi-check"
+      [loading]="state.saving()"
+      [disabled]="state.form.invalid"
+      (onClick)="state.save()"
+    />
+  </ng-template>
+</p-dialog>
