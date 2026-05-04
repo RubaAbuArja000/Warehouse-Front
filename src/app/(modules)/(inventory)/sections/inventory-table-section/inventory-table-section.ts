@@ -7,7 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { SelectModule } from 'primeng/select';
-import { InventoryStateService } from '../../../../services/api/inventory/inventory-state.service';
+import { InventoryStateService } from '../../services/inventory-state-management';
 
 @Component({
   selector: 'app-inventory-table',

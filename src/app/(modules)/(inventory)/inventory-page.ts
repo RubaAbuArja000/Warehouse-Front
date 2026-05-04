@@ -7,7 +7,7 @@ import { SelectModule } from 'primeng/select';
 import { DialogModule } from 'primeng/dialog';
 import { InventoryHeaderComponent } from './sections/inventory-header-section/inventory-header-section';
 import { InventoryTableComponent } from './sections/inventory-table-section/inventory-table-section';
-import { InventoryStateService } from '../../services/api/inventory/inventory-state.service';
+import { InventoryStateService } from './services/inventory-state-management';
 
 @Component({
   selector: 'app-inventory',

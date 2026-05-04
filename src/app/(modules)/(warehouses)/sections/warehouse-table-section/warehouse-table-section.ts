@@ -5,7 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
-import { WarehousesStateService } from '../../../../services/api/warehouse/warehouses-state.service';
+import { WarehousesStateManager } from '../../services/warehouses-state-management';
 
 @Component({
   selector: 'app-warehouse-table',
@@ -22,5 +22,5 @@ import { WarehousesStateService } from '../../../../services/api/warehouse/wareh
   styleUrl: './warehouse-table-section.scss',
 })
 export class WarehouseTableComponent {
-  protected state = inject(WarehousesStateService);
+  protected state = inject(WarehousesStateManager);
 }

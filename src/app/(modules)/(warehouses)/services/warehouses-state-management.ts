@@ -1,11 +1,11 @@
 import { Injectable, inject, signal, computed } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService, ConfirmationService } from 'primeng/api';
-import { WarehouseApiService } from './warehouse-api-service';
-import { Warehouse } from './models/warehouse.model';
+import { WarehouseApiService } from '../../../services/api/warehouse/warehouse-api-service';
+import { Warehouse } from '../../../services/api/warehouse/models/warehouse.model';
 
 @Injectable()
-export class WarehousesStateService {
+export class WarehousesStateManager {
   private api = inject(WarehouseApiService);
   private fb = inject(FormBuilder);
   private toast = inject(MessageService);

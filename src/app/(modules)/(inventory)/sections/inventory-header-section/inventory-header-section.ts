@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
-import { InventoryStateService } from '../../../../services/api/inventory/inventory-state.service';
+import { InventoryStateService } from '../../services/inventory-state-management';
 
 @Component({
   selector: 'app-inventory-header',

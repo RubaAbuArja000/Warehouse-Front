@@ -2,10 +2,10 @@ import { Injectable, inject, signal, computed } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { forkJoin } from 'rxjs';
-import { WarehouseItemApiService } from '../warehouse-item/warehouse-item-api-service';
-import { WarehouseApiService } from '../warehouse/warehouse-api-service';
-import { WarehouseItem } from '../warehouse-item/models/warehouse-item.model';
-import { Warehouse } from '../warehouse/models/warehouse.model';
+import { WarehouseItemApiService } from '../../../services/api/warehouse-item/warehouse-item-api-service';
+import { WarehouseApiService } from '../../../services/api/warehouse/warehouse-api-service';
+import { WarehouseItem } from '../../../services/api/warehouse-item/models/warehouse-item.model';
+import { Warehouse } from '../../../services/api/warehouse/models/warehouse.model';
 
 @Injectable()
 export class InventoryStateService {
