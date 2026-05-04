@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { WarehouseStatusComponent } from './sections/warehouse-status/warehouse-status';
-import { StockInsightsComponent } from './sections/stock-insights/stock-insights';
+import { WarehouseStatusComponent } from './sections/warehouse-status-section/warehouse-status-section';
+import { StockInsightsComponent } from './sections/stock-insights-section/stock-insights-section';
 
 @Component({
   selector: 'app-dashboard',

@@ -8,8 +8,8 @@ import { DashboardItem } from '../../../../models/dashboard.model';
   selector: 'app-stock-insights',
   standalone: true,
   imports: [DecimalPipe],
-  templateUrl: './stock-insights.html',
-  styleUrl: './stock-insights.scss',
+  templateUrl: './stock-insights-section.html',
+  styleUrl: './stock-insights-section.scss',
 })
 export class StockInsightsComponent implements OnInit {
   private api = inject(DashboardApiService);

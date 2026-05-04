@@ -7,8 +7,8 @@ import { WarehouseStatus } from '../../../../models/dashboard.model';
   selector: 'app-warehouse-status',
   standalone: true,
   imports: [DecimalPipe],
-  templateUrl: './warehouse-status.html',
-  styleUrl: './warehouse-status.scss',
+  templateUrl: './warehouse-status-section.html',
+  styleUrl: './warehouse-status-section.scss',
 })
 export class WarehouseStatusComponent implements OnInit {
   private api = inject(DashboardApiService);
