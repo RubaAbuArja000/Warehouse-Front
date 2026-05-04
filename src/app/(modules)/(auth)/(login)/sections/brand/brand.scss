@@ -1,0 +1,99 @@
+@use '../../../../../theme/variables' as v;
+
+:host {
+  display: contents;
+}
+
+.brand-panel {
+  flex: 1;
+  background: linear-gradient(145deg, v.$blue-800 0%, v.$blue-700 55%, v.$blue-600 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  &::before {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    right: -100px;
+  }
+
+  &::after {
+    width: 300px;
+    height: 300px;
+    bottom: -80px;
+    left: -80px;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.brand-content {
+  max-width: 340px;
+  color: white;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+
+  .brand-icon {
+    width: 72px;
+    height: 72px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+
+    .pi {
+      font-size: 2rem;
+      color: white;
+    }
+  }
+
+  h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 0.875rem;
+  }
+
+  > p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    opacity: 0.8;
+    margin-bottom: 2rem;
+  }
+
+  .brand-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    text-align: left;
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      font-size: 0.85rem;
+      opacity: 0.9;
+
+      .pi {
+        font-size: 0.875rem;
+        color: #86efac;
+      }
+    }
+  }
+}
