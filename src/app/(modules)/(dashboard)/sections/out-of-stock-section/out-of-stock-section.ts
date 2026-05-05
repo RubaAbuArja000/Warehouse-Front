@@ -38,7 +38,7 @@ export class OutOfStockComponent {
         formatter: (params: any) => `<strong>${params[0].name}</strong><br/>Out of stock`,
       },
 
-      grid: { left: 120, right: 70, top: 10, bottom: 20 },
+      grid: { left: 50, right: 20, top: 20, bottom: 40 },
 
       xAxis: { type: 'value', min: 0, max: 1, show: false },
 

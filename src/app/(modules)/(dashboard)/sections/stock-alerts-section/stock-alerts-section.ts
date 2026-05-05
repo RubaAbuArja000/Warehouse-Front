@@ -44,7 +44,7 @@ export class StockAlertsComponent {
         },
       },
 
-      grid: { left: 120, right: 20, top: 10, bottom: 20 },
+      grid: { left: 50, right: 20, top: 20, bottom: 40 },
 
       xAxis: {
         type: 'value',

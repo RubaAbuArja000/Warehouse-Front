@@ -44,7 +44,7 @@ export class StockInsightsComponent {
         },
       },
 
-      grid: { left: 50, right: 20, top: 20, bottom: 36 },
+      grid: { left: 50, right: 20, top: 20, bottom: 40 },
 
       xAxis: {
         type: 'category',
