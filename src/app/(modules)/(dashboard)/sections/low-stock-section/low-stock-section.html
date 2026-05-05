@@ -1,0 +1,7 @@
+<div class="chart-card">
+  <div class="chart-header">
+    <i class="pi pi-exclamation-triangle" style="color:#f59e0b"></i>
+    <span>Low Stock Alert</span>
+  </div>
+  <div echarts [options]="chartOption()" [loading]="state.loading()" class="chart"></div>
+</div>

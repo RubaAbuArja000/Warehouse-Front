@@ -8,6 +8,7 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MessageService, ConfirmationService } from 'primeng/api';
+import { provideEchartsCore } from 'ngx-echarts';
 
 import { routes } from './routes';
 import { authInterceptor } from './models/auth';
@@ -22,5 +23,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     MessageService,
     ConfirmationService,
+    provideEchartsCore({ echarts: () => import('echarts') }),
   ],
 };

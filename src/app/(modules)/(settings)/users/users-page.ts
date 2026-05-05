@@ -10,7 +10,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { UserApiService } from '../../../services/api/user/user-api-service';
-import { User } from '../../../models/user.model';
+import { User } from '../../../services/api/user/models/user.model';
 import { UserRole } from '../../../enums/user-role.enum';
 
 type TagSeverity = 'success' | 'info' | 'warn' | 'danger' | 'secondary' | 'contrast';

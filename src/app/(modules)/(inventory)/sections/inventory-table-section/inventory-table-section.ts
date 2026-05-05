@@ -7,7 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { SelectModule } from 'primeng/select';
-import { InventoryStateService } from '../../services/inventory-state-management';
+import { InventoryStateManagement } from '../../state-management/inventory-state-management';
 
 @Component({
   selector: 'app-inventory-table',
@@ -26,5 +26,5 @@ import { InventoryStateService } from '../../services/inventory-state-management
   styleUrl: './inventory-table-section.scss',
 })
 export class InventoryTableComponent {
-  protected state = inject(InventoryStateService);
+  protected state = inject(InventoryStateManagement);
 }

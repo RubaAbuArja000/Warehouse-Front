@@ -8,7 +8,7 @@ import { WarehouseItem } from '../../../services/api/warehouse-item/models/wareh
 import { Warehouse } from '../../../services/api/warehouse/models/warehouse.model';
 
 @Injectable()
-export class InventoryStateService {
+export class InventoryStateManagement {
   private itemApi = inject(WarehouseItemApiService);
   private warehouseApi = inject(WarehouseApiService);
   private fb = inject(FormBuilder);

@@ -7,7 +7,7 @@ import { SelectModule } from 'primeng/select';
 import { DialogModule } from 'primeng/dialog';
 import { InventoryHeaderComponent } from './sections/inventory-header-section/inventory-header-section';
 import { InventoryTableComponent } from './sections/inventory-table-section/inventory-table-section';
-import { InventoryStateService } from './services/inventory-state-management';
+import { InventoryStateManagement } from './state-management/inventory-state-management';
 
 @Component({
   selector: 'app-inventory',
@@ -24,10 +24,10 @@ import { InventoryStateService } from './services/inventory-state-management';
   ],
   templateUrl: './inventory-page.html',
   styleUrl: './inventory-page.scss',
-  providers: [InventoryStateService],
+  providers: [InventoryStateManagement],
 })
 export class InventoryComponent implements OnInit {
-  protected state = inject(InventoryStateService);
+  protected state = inject(InventoryStateManagement);
 
   ngOnInit(): void {
     this.state.load();
