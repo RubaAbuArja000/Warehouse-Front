@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
-import { User } from '../../../models/user.model';
+import { User } from '../../../services/api/user/models/user.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserApiService {

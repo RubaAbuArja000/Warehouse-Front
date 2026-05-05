@@ -1,7 +1,7 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { forkJoin } from 'rxjs';
 import { DashboardApiService } from '../../../services/api/dashboard/dashboard-api-service';
-import { WarehouseStatus, DashboardItem } from '../../../models/dashboard.model';
+import { WarehouseStatus, DashboardItem } from '../../../services/api/dashboard/models/dashboard.model';
 
 @Injectable()
 export class DashboardStateManagement {
