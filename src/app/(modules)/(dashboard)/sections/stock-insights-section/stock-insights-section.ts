@@ -1,7 +1,7 @@
 import { Component, inject, computed } from '@angular/core';
 import { NgxEchartsDirective } from 'ngx-echarts';
 import type { EChartsOption } from 'echarts';
-import { DashboardStateService } from '../../services/dashboard-state-management';
+import { DashboardStateManagement } from '../../state-management/dashboard-state-management';
 
 @Component({
   selector: 'app-stock-insights',
@@ -11,7 +11,7 @@ import { DashboardStateService } from '../../services/dashboard-state-management
   styleUrl: './stock-insights-section.scss',
 })
 export class StockInsightsComponent {
-  protected state = inject(DashboardStateService);
+  protected state = inject(DashboardStateManagement);
 
   protected chartOption = computed<EChartsOption>(() => ({
     tooltip: { trigger: 'axis' },

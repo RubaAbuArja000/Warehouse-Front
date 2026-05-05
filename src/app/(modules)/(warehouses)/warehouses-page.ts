@@ -5,7 +5,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { WarehouseHeaderComponent } from './sections/warehouse-header-section/warehouse-header-section';
 import { WarehouseTableComponent } from './sections/warehouse-table-section/warehouse-table-section';
-import { WarehousesStateManager } from './services/warehouses-state-management';
+import { WarehousesStateManagement } from './state-management/warehouses-state-management';
 
 @Component({
   selector: 'app-warehouses',
@@ -20,10 +20,10 @@ import { WarehousesStateManager } from './services/warehouses-state-management';
   ],
   templateUrl: './warehouses-page.html',
   styleUrl: './warehouses-page.scss',
-  providers: [WarehousesStateManager],
+  providers: [WarehousesStateManagement],
 })
 export class WarehousesComponent implements OnInit {
-  protected state = inject(WarehousesStateManager);
+  protected state = inject(WarehousesStateManagement);
 
   ngOnInit(): void {
     this.state.load();

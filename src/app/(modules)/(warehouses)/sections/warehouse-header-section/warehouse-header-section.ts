@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
-import { WarehousesStateManager } from '../../services/warehouses-state-management';
+import { WarehousesStateManagement } from '../../state-management/warehouses-state-management';
 
 @Component({
   selector: 'app-warehouse-header',
@@ -10,5 +10,5 @@ import { WarehousesStateManager } from '../../services/warehouses-state-manageme
   styleUrl: './warehouse-header-section.scss',
 })
 export class WarehouseHeaderComponent {
-  protected state = inject(WarehousesStateManager);
+  protected state = inject(WarehousesStateManagement);
 }

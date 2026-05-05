@@ -5,7 +5,7 @@ import { WarehouseApiService } from '../../../services/api/warehouse/warehouse-a
 import { Warehouse } from '../../../services/api/warehouse/models/warehouse.model';
 
 @Injectable()
-export class WarehousesStateManager {
+export class WarehousesStateManagement {
   private api = inject(WarehouseApiService);
   private fb = inject(FormBuilder);
   private toast = inject(MessageService);

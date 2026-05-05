@@ -5,7 +5,7 @@ import { StockAlertsComponent } from './sections/stock-alerts-section/stock-aler
 import { TopSellingComponent } from './sections/top-selling-section/top-selling-section';
 import { LowStockComponent } from './sections/low-stock-section/low-stock-section';
 import { OutOfStockComponent } from './sections/out-of-stock-section/out-of-stock-section';
-import { DashboardStateService  } from './services/dashboard-state-management';
+import { DashboardStateManagement  } from './state-management/dashboard-state-management';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,10 +20,10 @@ import { DashboardStateService  } from './services/dashboard-state-management';
   ],
   templateUrl: './dashboard-page.html',
   styleUrl: './dashboard-page.scss',
-  providers: [DashboardStateService],
+  providers: [DashboardStateManagement],
 })
 export class DashboardComponent implements OnInit {
-  protected state = inject(DashboardStateService);
+  protected state = inject(DashboardStateManagement);
 
   ngOnInit(): void {
     this.state.load();

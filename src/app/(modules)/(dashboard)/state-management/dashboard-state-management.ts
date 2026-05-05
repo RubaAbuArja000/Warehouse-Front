@@ -4,7 +4,7 @@ import { DashboardApiService } from '../../../services/api/dashboard/dashboard-a
 import { WarehouseStatus, DashboardItem } from '../../../models/dashboard.model';
 
 @Injectable()
-export class DashboardStateService {
+export class DashboardStateManagement {
   private api = inject(DashboardApiService);
 
   status        = signal<WarehouseStatus[]>([]);
