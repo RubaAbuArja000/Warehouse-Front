@@ -13,54 +13,73 @@ import { DashboardStateManagement } from '../../state-management/dashboard-state
 export class WarehouseStatusComponent {
   protected state = inject(DashboardStateManagement);
 
+  private readonly COLORS = [
+    '#3b82f6',
+    '#16a34a',
+    '#6366f1',
+    '#f59e0b',
+    '#ef4444',
+    '#06b6d4',
+    '#8b5cf6',
+    '#f97316',
+  ];
+
   protected chartOption = computed<EChartsOption>(() => {
     const data = this.state.status();
 
+    if (data.length === 0)
+      return {
+        graphic: [
+          {
+            type: 'text',
+            left: 'center',
+            top: 'middle',
+            style: { text: 'No data available', fontSize: 13, fill: '#9ca3af' },
+          },
+        ],
+      };
+
+    const total = data.reduce((s, w) => s + w.totalItems, 0);
+
     return {
+      animation: true,
+      animationDuration: 700,
+      animationEasing: 'cubicOut' as const,
+      color: this.COLORS,
+
       tooltip: {
         trigger: 'item',
-        formatter: '{b}: {c} ({d}%)',
+        formatter: (p: any) => {
+          const pct = total > 0 ? ((p.value / total) * 100).toFixed(1) : '0.0';
+          return `<strong>${p.name}</strong><br/>Items: ${p.value.toLocaleString()} (${pct}%)`;
+        },
       },
 
       legend: {
         bottom: 0,
         orient: 'horizontal',
-        textStyle: {
-          fontSize: 11,
-        },
+        itemWidth: 10,
+        itemHeight: 10,
+        textStyle: { fontSize: 11, color: '#6b7280' },
       },
 
       series: [
         {
           name: 'Warehouse Status',
           type: 'pie',
-          radius: ['45%', '70%'],
+          radius: ['42%', '68%'],
+          center: ['50%', '46%'],
           avoidLabelOverlap: true,
-
-          itemStyle: {
-            borderRadius: 6,
-            borderColor: '#fff',
-            borderWidth: 2,
-          },
-
-          label: {
-            fontSize: 11,
-            formatter: '{b}\n{d}%',
-          },
-
+          padAngle: 2,
+          itemStyle: { borderRadius: 6, borderColor: '#fff', borderWidth: 2 },
+          label: { show: true, fontSize: 11, formatter: '{d}%' },
+          labelLine: { show: true, length: 8, length2: 6 },
           emphasis: {
             scale: true,
-            scaleSize: 8,
+            scaleSize: 6,
+            itemStyle: { shadowBlur: 12, shadowColor: 'rgba(0,0,0,0.15)' },
           },
-
-          labelLine: {
-            show: true,
-          },
-
-          data: data.map((w) => ({
-            name: w.warehouseName,
-            value: w.totalItems,
-          })),
+          data: data.map((w) => ({ name: w.warehouseName, value: w.totalItems })),
         },
       ],
     };
