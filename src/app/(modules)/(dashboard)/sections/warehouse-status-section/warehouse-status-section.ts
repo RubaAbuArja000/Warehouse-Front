@@ -13,20 +13,56 @@ import { DashboardStateService } from '../../services/dashboard-state-management
 export class WarehouseStatusComponent {
   protected state = inject(DashboardStateService);
 
-  protected chartOption = computed<EChartsOption>(() => ({
-    tooltip: { trigger: 'axis' },
-    grid: { left: 50, right: 20, top: 16, bottom: 36 },
-    xAxis: {
-      type: 'category',
-      data: this.state.status().map(w => w.warehouseName),
-      axisLabel: { fontSize: 11, interval: 0, overflow: 'truncate', width: 80 },
-    },
-    yAxis: { type: 'value', axisLabel: { fontSize: 11 } },
-    series: [{
-      type: 'bar',
-      data: this.state.status().map(w => w.totalItems),
-      itemStyle: { color: '#3b82f6', borderRadius: [4, 4, 0, 0] },
-      barMaxWidth: 48,
-    }],
-  }));
+  protected chartOption = computed<EChartsOption>(() => {
+    const data = this.state.status();
+
+    return {
+      tooltip: {
+        trigger: 'item',
+        formatter: '{b}: {c} ({d}%)',
+      },
+
+      legend: {
+        bottom: 0,
+        orient: 'horizontal',
+        textStyle: {
+          fontSize: 11,
+        },
+      },
+
+      series: [
+        {
+          name: 'Warehouse Status',
+          type: 'pie',
+          radius: ['45%', '70%'],
+          avoidLabelOverlap: true,
+
+          itemStyle: {
+            borderRadius: 6,
+            borderColor: '#fff',
+            borderWidth: 2,
+          },
+
+          label: {
+            fontSize: 11,
+            formatter: '{b}\n{d}%',
+          },
+
+          emphasis: {
+            scale: true,
+            scaleSize: 8,
+          },
+
+          labelLine: {
+            show: true,
+          },
+
+          data: data.map((w) => ({
+            name: w.warehouseName,
+            value: w.totalItems,
+          })),
+        },
+      ],
+    };
+  });
 }
