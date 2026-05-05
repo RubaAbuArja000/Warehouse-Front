@@ -1,47 +1,7 @@
-<div class="insights-grid">
-  <div class="insight-panel">
-    <div class="panel-header">
-      <i class="pi pi-arrow-up-right" style="color:#16a34a"></i>
-      <span>Top High Stock</span>
-    </div>
-    @if (loading()) {
-      @for (_ of [1,2,3,4,5]; track $index) {
-        <div class="item-row skeleton"></div>
-      }
-    } @else {
-      @for (item of highItems(); track item.id; let i = $index) {
-        <div class="item-row">
-          <span class="rank">{{ i + 1 }}</span>
-          <span class="item-name">{{ item.name }}</span>
-          <span class="item-qty high">{{ item.quantity | number }}</span>
-        </div>
-      }
-      @if (highItems().length === 0) {
-        <p class="empty">No data.</p>
-      }
-    }
+<div class="chart-card">
+  <div class="chart-header">
+    <i class="pi pi-arrow-up-right" style="color:#16a34a"></i>
+    <span>Top High Stock</span>
   </div>
-
-  <div class="insight-panel">
-    <div class="panel-header">
-      <i class="pi pi-arrow-down-right" style="color:#ef4444"></i>
-      <span>Low Stock Alert</span>
-    </div>
-    @if (loading()) {
-      @for (_ of [1,2,3,4,5]; track $index) {
-        <div class="item-row skeleton"></div>
-      }
-    } @else {
-      @for (item of lowItems(); track item.id; let i = $index) {
-        <div class="item-row">
-          <span class="rank">{{ i + 1 }}</span>
-          <span class="item-name">{{ item.name }}</span>
-          <span class="item-qty low">{{ item.quantity | number }}</span>
-        </div>
-      }
-      @if (lowItems().length === 0) {
-        <p class="empty">No data.</p>
-      }
-    }
-  </div>
+  <div echarts [options]="chartOption()" [loading]="state.loading()" class="chart"></div>
 </div>

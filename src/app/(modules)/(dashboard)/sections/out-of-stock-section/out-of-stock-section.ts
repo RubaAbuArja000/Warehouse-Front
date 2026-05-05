@@ -4,29 +4,30 @@ import type { EChartsOption } from 'echarts';
 import { DashboardStateService } from '../../services/dashboard-state-management';
 
 @Component({
-  selector: 'app-stock-insights',
+  selector: 'app-out-of-stock',
   standalone: true,
   imports: [NgxEchartsDirective],
-  templateUrl: './stock-insights-section.html',
-  styleUrl: './stock-insights-section.scss',
+  templateUrl: './out-of-stock-section.html',
+  styleUrl: './out-of-stock-section.scss',
 })
-export class StockInsightsComponent {
+export class OutOfStockComponent {
   protected state = inject(DashboardStateService);
 
   protected chartOption = computed<EChartsOption>(() => ({
     tooltip: { trigger: 'axis' },
-    grid: { left: 120, right: 20, top: 10, bottom: 20 },
-    xAxis: { type: 'value', axisLabel: { fontSize: 11 } },
+    grid: { left: 120, right: 60, top: 10, bottom: 20 },
+    xAxis: { type: 'value', min: 0, max: 1, show: false },
     yAxis: {
       type: 'category',
-      data: this.state.highItems().map(i => i.name),
+      data: this.state.outOfStock().map(i => i.name),
       axisLabel: { fontSize: 11, width: 110, overflow: 'truncate' },
     },
     series: [{
       type: 'bar',
-      data: this.state.highItems().map(i => i.quantity),
-      itemStyle: { color: '#16a34a', borderRadius: [0, 4, 4, 0] },
-      barMaxWidth: 28,
+      data: this.state.outOfStock().map(() => 1),
+      itemStyle: { color: '#ef4444', borderRadius: [0, 4, 4, 0] },
+      barMaxWidth: 20,
+      label: { show: true, position: 'right', formatter: 'Out', fontSize: 10, color: '#6b7280' },
     }],
   }));
 }

@@ -1,16 +1,16 @@
 import { Component, inject, computed } from '@angular/core';
 import { NgxEchartsDirective } from 'ngx-echarts';
 import type { EChartsOption } from 'echarts';
-import { DashboardStateService } from '../../services/dashboard-state-management';
+import { DashboardStateService  } from '../../services/dashboard-state-management';
 
 @Component({
-  selector: 'app-stock-insights',
+  selector: 'app-low-stock',
   standalone: true,
   imports: [NgxEchartsDirective],
-  templateUrl: './stock-insights-section.html',
-  styleUrl: './stock-insights-section.scss',
+  templateUrl: './low-stock-section.html',
+  styleUrl: './low-stock-section.scss',
 })
-export class StockInsightsComponent {
+export class LowStockComponent {
   protected state = inject(DashboardStateService);
 
   protected chartOption = computed<EChartsOption>(() => ({
@@ -19,13 +19,13 @@ export class StockInsightsComponent {
     xAxis: { type: 'value', axisLabel: { fontSize: 11 } },
     yAxis: {
       type: 'category',
-      data: this.state.highItems().map(i => i.name),
+      data: this.state.lowStockItems().map(i => i.name),
       axisLabel: { fontSize: 11, width: 110, overflow: 'truncate' },
     },
     series: [{
       type: 'bar',
-      data: this.state.highItems().map(i => i.quantity),
-      itemStyle: { color: '#16a34a', borderRadius: [0, 4, 4, 0] },
+      data: this.state.lowStockItems().map(i => i.quantity),
+      itemStyle: { color: '#f59e0b', borderRadius: [0, 4, 4, 0] },
       barMaxWidth: 28,
     }],
   }));

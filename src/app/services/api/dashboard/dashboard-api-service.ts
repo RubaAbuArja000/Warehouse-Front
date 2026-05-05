@@ -20,4 +20,16 @@ export class DashboardApiService {
   getTopLowItems(): Observable<DashboardItem[]> {
     return this.http.get<DashboardItem[]>(`${this.url}/top-low-items`);
   }
+
+  getTopSellingItems(): Observable<DashboardItem[]> {
+    return this.http.get<DashboardItem[]>(`${this.url}/top-selling-items`);
+  }
+
+  getLowStockItems(): Observable<DashboardItem[]> {
+    return this.http.get<DashboardItem[]>(`${this.url}/low-stock-items`);
+  }
+
+  getOutOfStockItems(): Observable<DashboardItem[]> {
+    return this.http.get<DashboardItem[]>(`${this.url}/out-of-stock-items`);
+  }
 }
