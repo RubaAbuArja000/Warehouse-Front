@@ -5,8 +5,8 @@ import { LogsApiService } from '../../../../services/api/logs/logs-api-service';
   selector: 'app-logs',
   standalone: true,
   imports: [],
-  templateUrl: './logs-section.html',
-  styleUrl: './logs-section.scss',
+  templateUrl: './logs-page-section.html',
+  styleUrl: './logs-page-section.scss',
 })
 export class LogsPage implements OnInit {
   private api = inject(LogsApiService);

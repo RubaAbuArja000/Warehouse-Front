@@ -1,7 +1,7 @@
 import { Component, inject, signal, computed } from '@angular/core';
 import { Auth } from '../../models/auth';
 import { UsersPage } from './sections/users-section/users-page-section';
-import { LogsPage } from './sections/logs-section/logs-section';
+import { LogsPage } from './sections/logs-section/logs-page-section';
 import { UserRole } from '../../enums/user-role.enum';
 
 type Tab = 'users' | 'logs';

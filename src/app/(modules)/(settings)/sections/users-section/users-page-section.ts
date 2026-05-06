@@ -21,50 +21,62 @@ import { UserRole } from '../../../../enums/user-role.enum';
 type TagSeverity = 'success' | 'info' | 'warn' | 'danger' | 'secondary' | 'contrast';
 
 const ROLE_SEVERITY: Record<string, TagSeverity> = {
-  [UserRole.Admin]:      'danger',
+  [UserRole.Admin]: 'danger',
   [UserRole.Management]: 'warn',
-  [UserRole.Auditor]:    'info',
+  [UserRole.Auditor]: 'info',
 };
 
 const ROLE_OPTIONS = [
-  { label: 'Admin',      value: UserRole.Admin },
+  { label: 'Admin', value: UserRole.Admin },
   { label: 'Management', value: UserRole.Management },
-  { label: 'Auditor',    value: UserRole.Auditor },
+  { label: 'Auditor', value: UserRole.Auditor },
 ];
 
 @Component({
   selector: 'app-users',
   standalone: true,
   imports: [
-    ReactiveFormsModule, FormsModule,
-    TableModule, ButtonModule, ToggleSwitchModule,
-    TagModule, ToastModule, InputTextModule,
-    IconFieldModule, InputIconModule,
-    DialogModule, SelectModule, ConfirmDialogModule, CheckboxModule,
+    ReactiveFormsModule,
+    FormsModule,
+    TableModule,
+    ButtonModule,
+    ToggleSwitchModule,
+    TagModule,
+    ToastModule,
+    InputTextModule,
+    IconFieldModule,
+    InputIconModule,
+    DialogModule,
+    SelectModule,
+    ConfirmDialogModule,
+    CheckboxModule,
   ],
   templateUrl: './users-page-section.html',
   styleUrl: './users-page-section.scss',
   providers: [MessageService, ConfirmationService],
 })
 export class UsersPage implements OnInit {
-  private api     = inject(UserApiService);
-  private fb      = inject(FormBuilder);
-  private toast   = inject(MessageService);
+  private api = inject(UserApiService);
+  private fb = inject(FormBuilder);
+  private toast = inject(MessageService);
   private confirm = inject(ConfirmationService);
 
-  users      = signal<User[]>([]);
-  loading    = signal(true);
-  saving     = signal(false);
+  users = signal<User[]>([]);
+  loading = signal(true);
+  saving = signal(false);
   showDialog = signal(false);
-  editingId  = signal<number | null>(null);
-  query      = signal('');
+  editingId = signal<number | null>(null);
+  query = signal('');
 
   isEditing = computed(() => this.editingId() !== null);
-  filtered  = computed(() => {
+  filtered = computed(() => {
     const q = this.query().toLowerCase().trim();
     if (!q) return this.users();
     return this.users().filter(
-      (u) => u.name.toLowerCase().includes(q) || u.email.toLowerCase().includes(q) || u.role.toLowerCase().includes(q),
+      (u) =>
+        u.name.toLowerCase().includes(q) ||
+        u.email.toLowerCase().includes(q) ||
+        u.role.toLowerCase().includes(q),
     );
   });
 
@@ -72,15 +84,15 @@ export class UsersPage implements OnInit {
 
   form: FormGroup = this.fb.group({
     fullName: ['', Validators.required],
-    email:    ['', [Validators.required, Validators.email]],
-    role:     ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    role: ['', Validators.required],
     password: ['', Validators.required],
     isActive: [true],
   });
 
   editForm: FormGroup = this.fb.group({
     fullName: ['', Validators.required],
-    role:     ['', Validators.required],
+    role: ['', Validators.required],
     isActive: [true],
   });
 
@@ -91,8 +103,14 @@ export class UsersPage implements OnInit {
   private load(): void {
     this.loading.set(true);
     this.api.getAll().subscribe({
-      next:  (data) => { this.users.set(data); this.loading.set(false); },
-      error: ()     => { this.loading.set(false); this.error('Failed to load users'); },
+      next: (data) => {
+        this.users.set(data);
+        this.loading.set(false);
+      },
+      error: () => {
+        this.loading.set(false);
+        this.error('Failed to load users');
+      },
     });
   }
 
@@ -124,16 +142,21 @@ export class UsersPage implements OnInit {
         this.success(this.isEditing() ? 'User updated' : 'User created');
         this.load();
       },
-      error: () => { this.saving.set(false); this.error('Failed to save user'); },
+      error: () => {
+        this.saving.set(false);
+        this.error('Failed to save user');
+      },
     });
   }
 
   toggleStatus(user: User, isActive: boolean): void {
     this.users.update((list) => list.map((u) => (u.id === user.id ? { ...u, isActive } : u)));
     this.api.toggleStatus(user.id, isActive).subscribe({
-      next:  () => this.success(`${user.name} is now ${isActive ? 'Active' : 'Inactive'}`),
+      next: () => this.success(`${user.name} is now ${isActive ? 'Active' : 'Inactive'}`),
       error: () => {
-        this.users.update((list) => list.map((u) => (u.id === user.id ? { ...u, isActive: !isActive } : u)));
+        this.users.update((list) =>
+          list.map((u) => (u.id === user.id ? { ...u, isActive: !isActive } : u)),
+        );
         this.error('Failed to update status');
       },
     });
@@ -142,24 +165,36 @@ export class UsersPage implements OnInit {
   delete(user: User): void {
     this.confirm.confirm({
       message: `Delete user "${user.name}"?`,
-      header:  'Confirm Delete',
-      icon:    'pi pi-exclamation-triangle',
-      accept:  () =>
+      header: 'Confirm Delete',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () =>
         this.api.delete(user.id).subscribe({
-          next:  () => { this.users.update((list) => list.filter((u) => u.id !== user.id)); this.success('User deleted'); },
+          next: () => {
+            this.users.update((list) => list.filter((u) => u.id !== user.id));
+            this.success('User deleted');
+          },
           error: () => this.error('Failed to delete user'),
         }),
     });
   }
 
   getInitials(name: string): string {
-    return name.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2);
+    return name
+      .split(' ')
+      .map((n) => n[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
   }
 
   getRoleSeverity(role: string): TagSeverity {
     return ROLE_SEVERITY[role] ?? 'secondary';
   }
 
-  private success(detail: string): void { this.toast.add({ severity: 'success', summary: 'Success', detail }); }
-  private error(detail: string): void   { this.toast.add({ severity: 'error',   summary: 'Error',   detail }); }
+  private success(detail: string): void {
+    this.toast.add({ severity: 'success', summary: 'Success', detail });
+  }
+  private error(detail: string): void {
+    this.toast.add({ severity: 'error', summary: 'Error', detail });
+  }
 }
