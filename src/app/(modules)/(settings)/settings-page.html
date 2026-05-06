@@ -1,1 +1,24 @@
-<!-- settings page placeholder -->
+<div class="settings">
+
+  <div class="page-header">
+    <div>
+      <h2>Settings</h2>
+      <p>Manage users and system configuration</p>
+    </div>
+  </div>
+
+  <nav class="tab-nav">
+    <button class="tab" [class.active]="activeTab() === 'users'" (click)="activeTab.set('users')">
+      <i class="pi pi-users"></i> Users
+    </button>
+    @if (isAdmin()) {
+      <button class="tab" [class.active]="activeTab() === 'logs'" (click)="activeTab.set('logs')">
+        <i class="pi pi-file-alt"></i> Activity Logs
+      </button>
+    }
+  </nav>
+
+  @if (activeTab() === 'users') { <app-users /> }
+  @if (activeTab() === 'logs')  { <app-logs  /> }
+
+</div>

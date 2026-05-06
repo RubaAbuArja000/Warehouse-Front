@@ -1,0 +1,35 @@
+@use '../../theme/variables' as v;
+
+.tab-nav {
+  display: inline-flex;
+  gap: 0.25rem;
+  background: #f3f4f6;
+  padding: 0.25rem;
+  border-radius: 10px;
+  margin-bottom: 1.75rem;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.125rem;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: v.$gray-500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+
+  .pi { font-size: 0.875rem; }
+
+  &:hover { background: rgba(255,255,255,0.65); color: v.$gray-700; }
+
+  &.active {
+    background: #fff;
+    color: v.$blue-600;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+  }
+}

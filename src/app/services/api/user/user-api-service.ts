@@ -3,33 +3,35 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { User } from '../../../services/api/user/models/user.model';
+import { CreateUserRequest } from '../../../services/api/user/models/user.model';
+import { UpdateUserRequest } from '../../../services/api/user/models/user.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserApiService {
   private http = inject(HttpClient);
-  private apiUrl = `${environment.apiUrl}/users`;
+  private url = `${environment.apiUrl}/users`;
 
   getAll(): Observable<User[]> {
-    return this.http.get<User[]>(this.apiUrl);
+    return this.http.get<User[]>(this.url);
   }
 
   getById(id: number): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/${id}`);
+    return this.http.get<User>(`${this.url}/${id}`);
   }
 
-  create(user: Partial<User>): Observable<User> {
-    return this.http.post<User>(this.apiUrl, user);
+  create(req: CreateUserRequest): Observable<User> {
+    return this.http.post<User>(this.url, req);
   }
 
-  update(id: number, user: Partial<User>): Observable<User> {
-    return this.http.put<User>(`${this.apiUrl}/${id}`, user);
+  update(id: number, req: UpdateUserRequest): Observable<User> {
+    return this.http.put<User>(`${this.url}/${id}`, req);
   }
 
   toggleStatus(id: number, isActive: boolean): Observable<User> {
-    return this.http.patch<User>(`${this.apiUrl}/${id}/status`, { isActive });
+    return this.http.patch<User>(`${this.url}/${id}/status`, { isActive });
   }
 
   delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.url}/${id}`);
   }
 }
