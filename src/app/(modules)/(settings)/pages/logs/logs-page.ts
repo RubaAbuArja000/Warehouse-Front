@@ -5,22 +5,22 @@ import { LogsApiService } from '../../../../services/api/logs/logs-api-service';
   selector: 'app-logs',
   standalone: true,
   imports: [],
-  templateUrl: './logs-page-section.html',
-  styleUrl: './logs-page-section.scss',
+  templateUrl: './logs-page.html',
+  styleUrl: './logs-page.scss',
 })
 export class LogsPage implements OnInit {
   private api = inject(LogsApiService);
 
-  files        = signal<string[]>([]);
-  selectedFile = signal<string | null>(null);
-  content      = signal('');
-  loadingFiles = signal(true);
+  files          = signal<string[]>([]);
+  selectedFile   = signal<string | null>(null);
+  content        = signal('');
+  loadingFiles   = signal(true);
   loadingContent = signal(false);
 
   ngOnInit(): void {
     this.api.getFiles().subscribe({
-      next:  (files) => { this.files.set(files); this.loadingFiles.set(false); },
-      error: ()      => this.loadingFiles.set(false),
+      next:  files => { this.files.set(files); this.loadingFiles.set(false); },
+      error: ()    => this.loadingFiles.set(false),
     });
   }
 
@@ -30,8 +30,8 @@ export class LogsPage implements OnInit {
     this.content.set('');
     this.loadingContent.set(true);
     this.api.getContent(fileName).subscribe({
-      next:  (text) => { this.content.set(text); this.loadingContent.set(false); },
-      error: ()     => { this.content.set('Failed to load log content.'); this.loadingContent.set(false); },
+      next:  text => { this.content.set(text); this.loadingContent.set(false); },
+      error: ()   => { this.content.set('Failed to load log content.'); this.loadingContent.set(false); },
     });
   }
 }

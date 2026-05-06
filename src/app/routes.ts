@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './models/auth';
+import { UsersState } from './(modules)/(settings)/state-management/users-state';
 
 export const routes: Routes = [
   {
@@ -16,7 +17,7 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./layouts/main-layout/main-layout').then((m) => m.MainLayoutComponent),
+      import('./shared/main-layout/main-layout').then((m) => m.MainLayoutComponent),
     canActivate: [authGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -36,14 +37,39 @@ export const routes: Routes = [
           import('./(modules)/(inventory)/inventory-page').then((m) => m.InventoryComponent),
       },
       {
-        path: 'warehouse',
-        loadComponent: () =>
-          import('./(modules)/(inventory)/warehouse/warehouse').then((m) => m.WarehouseComponent),
-      },
-      {
         path: 'settings',
         loadComponent: () =>
           import('./(modules)/(settings)/settings-page').then((m) => m.SettingsComponent),
+        providers: [UsersState],
+        children: [
+          { path: '', redirectTo: 'users', pathMatch: 'full' },
+          {
+            path: 'users',
+            loadComponent: () =>
+              import('./(modules)/(settings)/pages/users/users-list-page').then(
+                (m) => m.UsersListPage,
+              ),
+          },
+          {
+            path: 'users/new',
+            loadComponent: () =>
+              import('./(modules)/(settings)/pages/users/user-create-page').then(
+                (m) => m.UserCreatePage,
+              ),
+          },
+          {
+            path: 'users/:id/edit',
+            loadComponent: () =>
+              import('./(modules)/(settings)/pages/users/user-edit-page').then(
+                (m) => m.UserEditPage,
+              ),
+          },
+          {
+            path: 'logs',
+            loadComponent: () =>
+              import('./(modules)/(settings)/pages/logs/logs-page').then((m) => m.LogsPage),
+          },
+        ],
       },
     ],
   },

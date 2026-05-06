@@ -1,21 +1,16 @@
-import { Component, inject, signal, computed } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { Auth } from '../../models/auth';
-import { UsersPage } from './sections/users-section/users-page-section';
-import { LogsPage } from './sections/logs-section/logs-page-section';
-import { UserRole } from '../../enums/user-role.enum';
-
-type Tab = 'users' | 'logs';
+import { UserRole } from '../../enums/user-role-enum';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [UsersPage, LogsPage],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './settings-page.html',
   styleUrl: './settings-page.scss',
 })
 export class SettingsComponent {
   private auth = inject(Auth);
-
-  activeTab = signal<Tab>('users');
-  isAdmin   = computed(() => this.auth.getRole() === UserRole.Admin);
+  isAdmin = computed(() => this.auth.getRole() === UserRole.Admin);
 }

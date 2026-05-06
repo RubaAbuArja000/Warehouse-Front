@@ -1,0 +1,23 @@
+<header class="app-header">
+  <span class="page-title">{{ pageTitle() }}</span>
+
+  <div class="header-right">
+    <div class="user-info">
+      <div class="user-avatar">{{ initials() }}</div>
+      <div class="user-meta">
+        <span class="user-name">{{ userName() }}</span>
+        <span class="user-role">{{ userRole() }}</span>
+      </div>
+    </div>
+    <p-button
+      icon="pi pi-sign-out"
+      [rounded]="true"
+      [text]="true"
+      severity="secondary"
+      size="small"
+      pTooltip="Logout"
+      tooltipPosition="bottom"
+      (onClick)="logout()"
+    />
+  </div>
+</header>

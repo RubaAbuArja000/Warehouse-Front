@@ -16,7 +16,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { CheckboxModule } from 'primeng/checkbox';
 import { UserApiService } from '../../../../services/api/user/user-api-service';
 import { User } from '../../../../services/api/user/models/user.model';
-import { UserRole } from '../../../../enums/user-role.enum';
+import { UserRole } from '../../../../enums/user-role-enum';
 
 type TagSeverity = 'success' | 'info' | 'warn' | 'danger' | 'secondary' | 'contrast';
 
@@ -51,11 +51,11 @@ const ROLE_OPTIONS = [
     ConfirmDialogModule,
     CheckboxModule,
   ],
-  templateUrl: './users-page-section.html',
-  styleUrl: './users-page-section.scss',
+  templateUrl: './users-section.html',
+  styleUrl: './users-section.scss',
   providers: [MessageService, ConfirmationService],
 })
-export class UsersPage implements OnInit {
+export class UsersSection implements OnInit {
   private api = inject(UserApiService);
   private fb = inject(FormBuilder);
   private toast = inject(MessageService);
