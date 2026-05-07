@@ -5,7 +5,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { TagModule } from 'primeng/tag';
-import { UsersState } from '../../state-management/users-state';
+import { UsersState } from './state-management/users-state';
 import { SearchBoxComponent } from '../../../../shared/search-box/search-box';
 import { ROLE_SEVERITY, TagSeverity } from '../../constants/settings.constants';
 import { User } from '../../../../services/api/user/models/user.model';

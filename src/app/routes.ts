@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './services/api/auth/auth';
-import { UsersState } from './(modules)/(settings)/state-management/users-state';
+import { UsersState } from './(modules)/(settings)/(modules)/users/state-management/users-state';
 
 export const routes: Routes = [
   {

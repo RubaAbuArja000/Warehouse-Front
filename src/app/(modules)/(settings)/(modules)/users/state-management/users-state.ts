@@ -2,9 +2,9 @@ import { Injectable, inject, signal, computed } from '@angular/core';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { UserApiService } from '../../../services/api/user/user-api-service';
-import { User } from '../../../services/api/user/models/user.model';
-import { CreateUserDto, UpdateUserDto } from '../constants/settings.constants';
+import { UserApiService } from '../../../../../services/api/user/user-api-service';
+import { User } from '../../../../../services/api/user/models/user.model';
+import { CreateUserDto, UpdateUserDto } from '../../../store/settings-store';
 
 @Injectable()
 export class UsersState {
