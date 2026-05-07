@@ -1,0 +1,41 @@
+:host { display: block; }
+
+.base-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+
+  &.padding {
+    padding: 1.25rem;
+  }
+
+  &.shadow {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  &.bordered {
+    border: 1px solid #e5e7eb;
+  }
+}
+
+.base-card-header {
+  margin-bottom: 1rem;
+
+  .title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    color: #111827;
+  }
+
+  .subtitle {
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+}
+
+.base-card-body {
+  display: block;
+}

@@ -1,0 +1,17 @@
+<div class="base-field">
+  @if (label()) {
+    <label class="base-label">{{ label() }}</label>
+  }
+
+  <p-select
+    [ngModel]="value()"
+    (ngModelChange)="onValueChange($event)"
+    [options]="options()"
+    [optionLabel]="optionLabel()"
+    [optionValue]="optionValue()"
+    [placeholder]="placeholder()"
+    [appendTo]="appendTo() || null"
+    [disabled]="disabled()"
+    (onBlur)="onBlur()"
+  />
+</div>

@@ -2,14 +2,6 @@
 
 :host { display: block; }
 
-.card {
-  background: #fff;
-  border-radius: 12px;
-  border: 1px solid v.$gray-200;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-}
-
 .table-toolbar {
   padding: 0.75rem 1rem;
   display: flex;

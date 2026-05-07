@@ -1,18 +1,18 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { SelectModule } from 'primeng/select';
-import { CheckboxModule } from 'primeng/checkbox';
 import { UsersState } from '../../state-management/users-state';
 import { UserApiService } from '../../../../../../services/api/user/user-api-service';
 import { ROLE_OPTIONS, UpdateUserDto } from '../../../../store/settings-store';
 import { BaseInput } from '../../../../../../theme/components/base-input/base-input';
 import { BaseButton } from '../../../../../../theme/components/base-button/base-button';
+import { BaseSelect } from '../../../../../../theme/components/base-select/base-select';
+import { BaseCheckbox } from '../../../../../../theme/components/base-checkbox/base-checkbox';
 
 @Component({
   selector: 'app-user-edit',
   standalone: true,
-  imports: [ReactiveFormsModule, SelectModule, CheckboxModule, BaseInput, BaseButton],
+  imports: [ReactiveFormsModule, BaseInput, BaseButton, BaseSelect, BaseCheckbox],
   templateUrl: './user-edit-page.html',
   styleUrl: './user-edit-page.scss',
 })

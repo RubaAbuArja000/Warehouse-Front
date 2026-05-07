@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+.base-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.base-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #374151;
+}

@@ -1,0 +1,20 @@
+<div
+  class="base-card"
+  [class.shadow]="shadow()"
+  [class.padding]="padding()"
+  [class.bordered]="bordered()"
+>
+  @if (title()) {
+    <div class="base-card-header">
+      <h3 class="title">{{ title() }}</h3>
+
+      @if (subtitle()) {
+        <p class="subtitle">{{ subtitle() }}</p>
+      }
+    </div>
+  }
+
+  <div class="base-card-body">
+    <ng-content></ng-content>
+  </div>
+</div>

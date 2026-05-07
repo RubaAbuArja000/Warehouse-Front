@@ -15,17 +15,15 @@
 
     <app-base-input formControlName="password" label="Password *" placeholder="Password" type="password" />
 
-    <div class="field">
-      <label>Role *</label>
-      <p-select
-        formControlName="role"
-        [options]="roleOptions"
-        optionLabel="label"
-        optionValue="value"
-        placeholder="Select role"
-        appendTo="body"
-      />
-    </div>
+    <app-base-select
+      formControlName="role"
+      label="Role *"
+      [options]="roleOptions"
+      optionLabel="label"
+      optionValue="value"
+      placeholder="Select role"
+      appendTo="body"
+    />
 
     <div class="form-actions">
       <app-base-button label="Cancel" severity="secondary" [text]="true" (onClick)="cancel()" />

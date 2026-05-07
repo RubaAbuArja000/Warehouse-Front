@@ -3,7 +3,7 @@
   <app-base-button label="New User" icon="pi pi-plus" (onClick)="openCreate()" />
 </div>
 
-<div class="card">
+<app-base-card [padding]="false" [bordered]="true">
   <div class="table-toolbar">
     <app-search-box
       [value]="state.query()"
@@ -43,7 +43,7 @@
         <td><p-tag [value]="user.role" [severity]="getRoleSeverity(user.role)" /></td>
         <td>
           <div class="status-cell">
-            <p-toggleswitch
+            <app-base-switch
               [ngModel]="user.isActive"
               (ngModelChange)="state.toggleStatus(user, $event)"
             />
@@ -82,4 +82,4 @@
       </tr>
     </ng-template>
   </p-table>
-</div>
+</app-base-card>

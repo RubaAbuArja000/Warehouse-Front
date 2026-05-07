@@ -1,16 +1,16 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { SelectModule } from 'primeng/select';
 import { UsersState } from '../../state-management/users-state';
 import { ROLE_OPTIONS, CreateUserDto } from '../../../../store/settings-store';
 import { BaseInput } from '../../../../../../theme/components/base-input/base-input';
 import { BaseButton } from '../../../../../../theme/components/base-button/base-button';
+import { BaseSelect } from '../../../../../../theme/components/base-select/base-select';
 
 @Component({
   selector: 'app-user-create',
   standalone: true,
-  imports: [ReactiveFormsModule, SelectModule, BaseInput, BaseButton],
+  imports: [ReactiveFormsModule, BaseInput, BaseButton, BaseSelect],
   templateUrl: './user-create-page.html',
   styleUrl: './user-create-page.scss',
 })

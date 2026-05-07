@@ -8,6 +8,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { SelectModule } from 'primeng/select';
 import { InventoryStateManagement } from '../../state-management/inventory-state-management';
 import { BaseButton } from '../../../../theme/components/base-button/base-button';
+import { BaseCard } from '../../../../theme/components/base-card/base-card';
 
 @Component({
   selector: 'app-inventory-table',
@@ -21,6 +22,7 @@ import { BaseButton } from '../../../../theme/components/base-button/base-button
     InputIconModule,
     SelectModule,
     BaseButton,
+    BaseCard,
   ],
   templateUrl: './inventory-table-section.html',
   styleUrl: './inventory-table-section.scss',

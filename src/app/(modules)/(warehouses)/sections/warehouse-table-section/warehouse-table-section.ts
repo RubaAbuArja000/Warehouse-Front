@@ -6,6 +6,7 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { WarehousesStateManagement } from '../../state-management/warehouses-state-management';
 import { BaseButton } from '../../../../theme/components/base-button/base-button';
+import { BaseCard } from '../../../../theme/components/base-card/base-card';
 
 @Component({
   selector: 'app-warehouse-table',
@@ -17,6 +18,7 @@ import { BaseButton } from '../../../../theme/components/base-button/base-button
     IconFieldModule,
     InputIconModule,
     BaseButton,
+    BaseCard,
   ],
   templateUrl: './warehouse-table-section.html',
   styleUrl: './warehouse-table-section.scss',

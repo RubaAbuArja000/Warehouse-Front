@@ -2,18 +2,19 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
-import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { TagModule } from 'primeng/tag';
 import { UsersState } from './state-management/users-state';
 import { SearchBoxComponent } from '../../../../shared/search-box/search-box';
 import { User } from '../../../../services/api/user/models/user.model';
 import { TagSeverity, ROLE_SEVERITY } from '../../store/settings-store';
 import { BaseButton } from '../../../../theme/components/base-button/base-button';
+import { BaseSwitch } from '../../../../theme/components/base-switch/base-switch';
+import { BaseCard } from '../../../../theme/components/base-card/base-card';
 
 @Component({
   selector: 'app-users-list',
   standalone: true,
-  imports: [FormsModule, TableModule, ToggleSwitchModule, TagModule, SearchBoxComponent, BaseButton],
+  imports: [FormsModule, TableModule, TagModule, SearchBoxComponent, BaseButton, BaseSwitch, BaseCard],
   templateUrl: './users-list-page.html',
   styleUrl: './users-list-page.scss',
 })
