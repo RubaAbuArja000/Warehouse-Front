@@ -6,8 +6,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
 import { CheckboxModule } from 'primeng/checkbox';
 import { UsersState } from '../../state-management/users-state';
-import { UserApiService } from '../../../../services/api/user/user-api-service';
-import { ROLE_OPTIONS, UpdateUserDto } from '../../constants/settings.constants';
+import { UserApiService } from '../../../../../../services/api/user/user-api-service';
+import { ROLE_OPTIONS, UpdateUserDto } from '../../../../store/settings-store';
 
 @Component({
   selector: 'app-user-edit',

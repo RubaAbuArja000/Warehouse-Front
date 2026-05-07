@@ -5,8 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
 import { UsersState } from '../../state-management/users-state';
-import { ROLE_OPTIONS } from '../../constants/settings.constants';
-import { CreateUserDto } from '../../constants/settings.constants';
+import { ROLE_OPTIONS, CreateUserDto } from '../../../../store/settings-store';
 
 @Component({
   selector: 'app-user-create',

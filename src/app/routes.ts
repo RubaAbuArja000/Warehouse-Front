@@ -46,28 +46,28 @@ export const routes: Routes = [
           {
             path: 'users',
             loadComponent: () =>
-              import('./(modules)/(settings)/pages/users/users-list-page').then(
+              import('./(modules)/(settings)/(modules)/users/users-list-page').then(
                 (m) => m.UsersListPage,
               ),
           },
           {
             path: 'users/new',
             loadComponent: () =>
-              import('./(modules)/(settings)/pages/users/user-create-page').then(
+              import('./(modules)/(settings)/(modules)/users/(modules)/users-create-page/user-create-page').then(
                 (m) => m.UserCreatePage,
               ),
           },
           {
             path: 'users/:id/edit',
             loadComponent: () =>
-              import('./(modules)/(settings)/pages/users/user-edit-page').then(
+              import('./(modules)/(settings)/(modules)/users/(modules)/users-edit-page/user-edit-page').then(
                 (m) => m.UserEditPage,
               ),
           },
           {
             path: 'logs',
             loadComponent: () =>
-              import('./(modules)/(settings)/pages/logs/logs-page').then((m) => m.LogsPage),
+              import('./(modules)/(settings)/(modules)/logs/logs-page').then((m) => m.LogsPage),
           },
         ],
       },

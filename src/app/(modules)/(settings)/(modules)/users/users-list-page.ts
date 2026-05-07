@@ -7,8 +7,8 @@ import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { TagModule } from 'primeng/tag';
 import { UsersState } from './state-management/users-state';
 import { SearchBoxComponent } from '../../../../shared/search-box/search-box';
-import { ROLE_SEVERITY, TagSeverity } from '../../constants/settings.constants';
 import { User } from '../../../../services/api/user/models/user.model';
+import { TagSeverity, ROLE_SEVERITY } from '../../store/settings-store';
 
 @Component({
   selector: 'app-users-list',
