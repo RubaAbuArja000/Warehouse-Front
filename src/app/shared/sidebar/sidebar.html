@@ -1,0 +1,21 @@
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-icon"><i class="pi pi-box"></i></div>
+  </div>
+
+  <div class="sidebar-nav">
+    @for (item of navItems(); track item.route) {
+      <a class="nav-item"
+         [routerLink]="item.route"
+         routerLinkActive="active"
+         [pTooltip]="item.label"
+         tooltipPosition="right">
+        <i [class]="item.icon"></i>
+      </a>
+    }
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="footer-dot"></div>
+  </div>
+</nav>

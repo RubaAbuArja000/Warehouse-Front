@@ -1,0 +1,48 @@
+<div class="page-header">
+  <div>
+    <h2>Edit User</h2>
+    <p>Update user information and role</p>
+  </div>
+  <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="cancel()" />
+</div>
+
+@if (loading()) {
+  <div class="loading-state">
+    <i class="pi pi-spin pi-spinner"></i>
+  </div>
+} @else {
+  <div class="form-card">
+    <form [formGroup]="form" class="dialog-form">
+
+      <div class="field">
+        <label for="fullName">Full Name *</label>
+        <input id="fullName" pInputText formControlName="fullName" placeholder="Full name" />
+      </div>
+
+      <div class="field">
+        <label>Role *</label>
+        <p-select
+          formControlName="role"
+          [options]="roleOptions"
+          optionLabel="label"
+          optionValue="value"
+          placeholder="Select role"
+          appendTo="body"
+        />
+      </div>
+
+      <div class="field-row">
+        <label class="checkbox-label">
+          <p-checkbox formControlName="isActive" [binary]="true" />
+          Active
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="cancel()" />
+        <p-button label="Save Changes" icon="pi pi-check" [loading]="saving()" (onClick)="save()" />
+      </div>
+
+    </form>
+  </div>
+}

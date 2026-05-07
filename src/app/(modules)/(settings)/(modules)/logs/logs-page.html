@@ -1,0 +1,42 @@
+<div class="page-header">
+  <div>
+    <h3>Activity Logs</h3>
+    <p>Admin-only — application log files</p>
+  </div>
+</div>
+
+<div class="logs-layout">
+  <div class="file-list">
+    @if (loadingFiles()) {
+      @for (_ of [1, 2, 3]; track $index) {
+        <div class="file-item skeleton"></div>
+      }
+    } @else if (files().length === 0) {
+      <p class="empty">No log files found.</p>
+    } @else {
+      @for (f of files(); track f) {
+        <button
+          class="file-item"
+          [class.active]="selectedFile() === f"
+          (click)="selectFile(f)"
+        >
+          <i class="pi pi-file-alt"></i>
+          <span>{{ f }}</span>
+        </button>
+      }
+    }
+  </div>
+
+  <div class="file-content">
+    @if (!selectedFile()) {
+      <div class="content-placeholder">
+        <i class="pi pi-file-alt"></i>
+        <p>Select a log file to view its contents</p>
+      </div>
+    } @else if (loadingContent()) {
+      <div class="content-placeholder"><i class="pi pi-spin pi-spinner"></i></div>
+    } @else {
+      <pre class="log-text">{{ content() }}</pre>
+    }
+  </div>
+</div>

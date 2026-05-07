@@ -1,1 +1,14 @@
-<!-- settings page placeholder -->
+<div class="settings-shell">
+  <nav class="tab-nav">
+    <a class="tab" routerLink="users" routerLinkActive="active">
+      <i class="pi pi-users"></i> Users
+    </a>
+    @if (isAdmin()) {
+      <a class="tab" routerLink="logs" routerLinkActive="active">
+        <i class="pi pi-file-alt"></i> Activity Logs
+      </a>
+    }
+  </nav>
+
+  <router-outlet />
+</div>
