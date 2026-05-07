@@ -1,6 +1,6 @@
 import { Component, inject, computed } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-import { Auth } from '../../models/auth';
+import { Auth } from '../../services/api/auth/auth';
 import { UserRole } from '../../enums/user-role-enum';
 
 @Component({

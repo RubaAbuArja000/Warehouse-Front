@@ -2,10 +2,10 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpInterceptorFn } from '@angular/common/http';
 import { CanActivateFn, Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
-import { environment } from '../../environments/environment';
-import { JwtHelper } from '../helpers/jwt.helper';
+import { environment } from '../../../../environments/environment';
+import { JwtHelper } from '../../../helpers/jwt.helper';
 
-import { LoginRequest, LoginResponse } from '../models/auth.model';
+import { LoginRequest, LoginResponse } from './auth.model';
 
 const TOKEN_KEY = 'auth_token';
 

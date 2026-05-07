@@ -14,7 +14,7 @@ import Aura from '@primeuix/themes/aura';
 import { provideEchartsCore } from 'ngx-echarts';
 
 import { routes } from './routes';
-import { authInterceptor } from './models/auth';
+import { authInterceptor } from './services/api/auth/auth';
 
 export const appConfig: ApplicationConfig = {
   providers: [

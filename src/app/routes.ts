@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { authGuard } from './models/auth';
+import { authGuard } from './services/api/auth/auth';
 import { UsersState } from './(modules)/(settings)/state-management/users-state';
 
 export const routes: Routes = [
