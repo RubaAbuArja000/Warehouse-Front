@@ -3,26 +3,17 @@
     <h2>New User</h2>
     <p>Add a new system user</p>
   </div>
-  <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="cancel()" />
+  <app-base-button label="Cancel" severity="secondary" [text]="true" (onClick)="cancel()" />
 </div>
 
 <div class="form-card">
   <form [formGroup]="form" class="dialog-form">
 
-    <div class="field">
-      <label for="fullName">Full Name *</label>
-      <input id="fullName" pInputText formControlName="fullName" placeholder="Full name" />
-    </div>
+    <app-base-input formControlName="fullName" label="Full Name *" placeholder="Full name" />
 
-    <div class="field">
-      <label for="email">Email *</label>
-      <input id="email" pInputText formControlName="email" type="email" placeholder="Email address" />
-    </div>
+    <app-base-input formControlName="email" label="Email *" placeholder="Email address" type="email" />
 
-    <div class="field">
-      <label for="password">Password *</label>
-      <input id="password" pInputText formControlName="password" type="password" placeholder="Password" />
-    </div>
+    <app-base-input formControlName="password" label="Password *" placeholder="Password" type="password" />
 
     <div class="field">
       <label>Role *</label>
@@ -37,8 +28,8 @@
     </div>
 
     <div class="form-actions">
-      <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="cancel()" />
-      <p-button label="Create User" icon="pi pi-check" [loading]="saving()" (onClick)="save()" />
+      <app-base-button label="Cancel" severity="secondary" [text]="true" (onClick)="cancel()" />
+      <app-base-button label="Create User" icon="pi pi-check" [loading]="saving()" (onClick)="save()" />
     </div>
 
   </form>

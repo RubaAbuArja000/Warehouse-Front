@@ -3,7 +3,7 @@
     <h2>Edit User</h2>
     <p>Update user information and role</p>
   </div>
-  <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="cancel()" />
+  <app-base-button label="Cancel" severity="secondary" [text]="true" (onClick)="cancel()" />
 </div>
 
 @if (loading()) {
@@ -13,11 +13,7 @@
 } @else {
   <div class="form-card">
     <form [formGroup]="form" class="dialog-form">
-
-      <div class="field">
-        <label for="fullName">Full Name *</label>
-        <input id="fullName" pInputText formControlName="fullName" placeholder="Full name" />
-      </div>
+      <app-base-input formControlName="fullName" label="Full Name *" placeholder="Full name" />
 
       <div class="field">
         <label>Role *</label>
@@ -39,10 +35,14 @@
       </div>
 
       <div class="form-actions">
-        <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="cancel()" />
-        <p-button label="Save Changes" icon="pi pi-check" [loading]="saving()" (onClick)="save()" />
+        <app-base-button label="Cancel" severity="secondary" [text]="true" (onClick)="cancel()" />
+        <app-base-button
+          label="Save Changes"
+          icon="pi pi-check"
+          [loading]="saving()"
+          (onClick)="save()"
+        />
       </div>
-
     </form>
   </div>
 }

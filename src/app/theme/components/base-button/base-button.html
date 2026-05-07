@@ -1,0 +1,16 @@
+<p-button
+  [label]="label() || undefined"
+  [icon]="icon() || undefined"
+  [iconPos]="iconPos()"
+  [severity]="severity() ?? undefined"
+  [loading]="loading()"
+  [disabled]="disabled()"
+  [text]="text()"
+  [rounded]="rounded()"
+  [size]="size() ?? undefined"
+  [fluid]="fluid()"
+  [type]="type()"
+  [pTooltip]="tooltip() || undefined"
+  [tooltipPosition]="tooltipPosition()"
+  (onClick)="onClick.emit($event)"
+/>

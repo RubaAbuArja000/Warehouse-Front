@@ -42,7 +42,7 @@
         <td>{{ w.country }}</td>
         <td>
           <div class="actions">
-            <p-button
+            <app-base-button
               icon="pi pi-pencil"
               [text]="true"
               [rounded]="true"
@@ -50,7 +50,7 @@
               size="small"
               (onClick)="state.openEdit(w)"
             />
-            <p-button
+            <app-base-button
               icon="pi pi-trash"
               [text]="true"
               [rounded]="true"

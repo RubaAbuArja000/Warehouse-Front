@@ -11,14 +11,13 @@
   [style]="{ width: '520px' }"
 >
   <form [formGroup]="state.form" (ngSubmit)="state.save()" novalidate class="dialog-form">
-    <div class="field">
-      <label>Item Name *</label>
-      <input pInputText formControlName="itemName" placeholder="e.g. Safety Gloves" />
-    </div>
-    <div class="field">
-      <label>SKU Code</label>
-      <input pInputText formControlName="skuCode" placeholder="Optional SKU" />
-    </div>
+    <app-base-input
+      formControlName="itemName"
+      label="Item Name *"
+      placeholder="e.g. Safety Gloves"
+    />
+    <app-base-input formControlName="skuCode" label="SKU Code" placeholder="Optional SKU" />
+
     <div class="field">
       <label>Warehouse *</label>
       <p-select
@@ -28,34 +27,33 @@
         styleClass="full-w"
       />
     </div>
+
     <div class="field-row">
       <div class="field">
         <label>Quantity *</label>
-        <p-inputnumber formControlName="quantity" [min]="1" styleClass="full-w" />
+        <p-inputnumber formControlName="quantity" [min]="1" />
       </div>
+
       <div class="field">
         <label>Cost Price *</label>
-        <p-inputnumber
-          formControlName="costPrice"
-          mode="currency"
-          currency="USD"
-          styleClass="full-w"
-        />
+        <p-inputnumber formControlName="costPrice" mode="currency" currency="USD" />
       </div>
     </div>
+
     <div class="field">
       <label>MSRP</label>
-      <p-inputnumber
-        formControlName="msrpPrice"
-        mode="currency"
-        currency="USD"
-        styleClass="full-w"
-      />
+      <p-inputnumber formControlName="msrpPrice" mode="currency" currency="USD" />
     </div>
   </form>
 
   <ng-template #footer>
-    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="state.showDialog.set(false)" />
+    <p-button
+      label="Cancel"
+      severity="secondary"
+      [text]="true"
+      (onClick)="state.showDialog.set(false)"
+    />
+
     <p-button
       [label]="state.isEditing() ? 'Update' : 'Create'"
       icon="pi pi-check"

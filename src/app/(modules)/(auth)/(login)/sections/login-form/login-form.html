@@ -6,54 +6,19 @@
     </header>
 
     <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
-      <div class="field">
-        <label for="email">Email address</label>
+      <app-base-input
+        formControlName="email"
+        label="Email address"
+        placeholder="Enter your email"
+        type="email"
+      />
 
-        <input
-          pInputText
-          id="email"
-          type="email"
-          formControlName="email"
-          placeholder="Enter your email"
-          [class.is-invalid]="email()?.invalid && email()?.touched"
-          autocomplete="email"
-        />
-
-        @if (email()?.errors?.['required'] && email()?.touched) {
-          <small class="field-error">Email is required</small>
-        } @else if (email()?.errors?.['email'] && email()?.touched) {
-          <small class="field-error">Enter a valid email address</small>
-        }
-      </div>
-
-      <div class="field">
-        <label for="password">Password</label>
-
-        <div class="input-with-icon">
-          <input
-            pInputText
-            id="password"
-            [type]="showPassword() ? 'text' : 'password'"
-            formControlName="password"
-            placeholder="Enter your password"
-            [class.is-invalid]="password()?.invalid && password()?.touched"
-            autocomplete="current-password"
-          />
-
-          <button
-            type="button"
-            class="icon-btn"
-            (click)="togglePassword()"
-            [attr.aria-label]="showPassword() ? 'Hide password' : 'Show password'"
-          >
-            <i [class]="showPassword() ? 'pi pi-eye-slash' : 'pi pi-eye'"></i>
-          </button>
-        </div>
-
-        @if (password()?.errors?.['required'] && password()?.touched) {
-          <small class="field-error">Password is required</small>
-        }
-      </div>
+      <app-base-input
+        formControlName="password"
+        label="Password"
+        placeholder="Enter your password"
+        [type]="showPassword() ? 'text' : 'password'"
+      />
 
       @if (errorMessage()) {
         <div class="alert-error" role="alert">
@@ -63,7 +28,7 @@
       }
 
       <div class="form-actions">
-        <p-button
+        <app-base-button
           type="submit"
           label="Sign In"
           icon="pi pi-sign-in"
@@ -71,7 +36,6 @@
           [loading]="loading()"
           [disabled]="form.invalid"
           [fluid]="true"
-          styleClass="signin-btn"
         />
       </div>
     </form>

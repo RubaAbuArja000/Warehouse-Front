@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
 import { WarehousesStateManagement } from '../../state-management/warehouses-state-management';
+import { BaseButton } from '../../../../theme/components/base-button/base-button';
 
 @Component({
   selector: 'app-warehouse-header',
   standalone: true,
-  imports: [ButtonModule],
+  imports: [BaseButton],
   templateUrl: './warehouse-header-section.html',
   styleUrl: './warehouse-header-section.scss',
 })

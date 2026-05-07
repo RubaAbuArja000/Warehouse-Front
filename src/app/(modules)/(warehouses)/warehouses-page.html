@@ -11,32 +11,26 @@
   [style]="{ width: '480px' }"
 >
   <form [formGroup]="state.form" (ngSubmit)="state.save()" novalidate class="dialog-form">
-    <div class="field">
-      <label>Name *</label>
-      <input pInputText formControlName="name" placeholder="Warehouse name" />
-    </div>
+    <app-base-input formControlName="name" label="Name *" placeholder="Warehouse name" />
 
-    <div class="field">
-      <label>Address *</label>
-      <input pInputText formControlName="address" placeholder="Street address" />
-    </div>
+    <app-base-input formControlName="address" label="Address *" placeholder="Street address" />
 
     <div class="field-row">
-      <div class="field">
-        <label>City *</label>
-        <input pInputText formControlName="city" placeholder="City" />
-      </div>
+      <app-base-input formControlName="city" label="City *" placeholder="City" />
 
-      <div class="field">
-        <label>Country *</label>
-        <input pInputText formControlName="country" placeholder="Country" />
-      </div>
+      <app-base-input formControlName="country" label="Country *" placeholder="Country" />
     </div>
   </form>
 
   <ng-template #footer>
-    <p-button label="Cancel" severity="secondary" [text]="true" (onClick)="state.showDialog.set(false)" />
-    <p-button
+    <app-base-button
+      label="Cancel"
+      severity="secondary"
+      [text]="true"
+      (onClick)="state.showDialog.set(false)"
+    />
+
+    <app-base-button
       [label]="state.isEditing() ? 'Update' : 'Create'"
       icon="pi pi-check"
       [loading]="state.saving()"

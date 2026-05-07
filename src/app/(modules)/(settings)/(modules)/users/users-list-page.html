@@ -1,6 +1,6 @@
 <div class="page-header">
   <h3>User Management</h3>
-  <p-button label="New User" icon="pi pi-plus" (onClick)="openCreate()" />
+  <app-base-button label="New User" icon="pi pi-plus" (onClick)="openCreate()" />
 </div>
 
 <div class="card">
@@ -54,13 +54,13 @@
         </td>
         <td>
           <div class="actions">
-            <p-button
+            <app-base-button
               icon="pi pi-pencil"
               [rounded]="true" [text]="true"
               severity="info" size="small"
               (onClick)="openEdit(user)"
             />
-            <p-button
+            <app-base-button
               icon="pi pi-trash"
               [rounded]="true" [text]="true"
               severity="danger" size="small"

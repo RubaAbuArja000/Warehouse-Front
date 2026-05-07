@@ -3,31 +3,31 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Auth } from '../../../../../services/api/auth/auth';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
+import { BaseInput } from '../../../../../theme/components/base-input/base-input';
+import { BaseButton } from '../../../../../theme/components/base-button/base-button';
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [ReactiveFormsModule, ButtonModule, InputTextModule],
+  imports: [ReactiveFormsModule, BaseInput, BaseButton],
   templateUrl: './login-form.html',
   styleUrl: './login-form.scss',
 })
 export class LoginFormComponent {
-  private fb     = inject(FormBuilder);
-  private auth   = inject(Auth);
+  private fb = inject(FormBuilder);
+  private auth = inject(Auth);
   private router = inject(Router);
 
   form: FormGroup = this.fb.group({
-    email:    ['admin@happywarehouse.com', [Validators.required, Validators.email]],
+    email: ['admin@happywarehouse.com', [Validators.required, Validators.email]],
     password: ['P@ssw0rd', [Validators.required]],
   });
 
-  loading      = signal(false);
+  loading = signal(false);
   errorMessage = signal('');
   showPassword = signal(false);
 
-  email    = computed(() => this.form.get('email'));
+  email = computed(() => this.form.get('email'));
   password = computed(() => this.form.get('password'));
 
   submit(): void {

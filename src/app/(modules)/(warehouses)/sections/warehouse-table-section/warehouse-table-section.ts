@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
-import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { WarehousesStateManagement } from '../../state-management/warehouses-state-management';
+import { BaseButton } from '../../../../theme/components/base-button/base-button';
 
 @Component({
   selector: 'app-warehouse-table',
@@ -13,10 +13,10 @@ import { WarehousesStateManagement } from '../../state-management/warehouses-sta
   imports: [
     FormsModule,
     TableModule,
-    ButtonModule,
     InputTextModule,
     IconFieldModule,
     InputIconModule,
+    BaseButton,
   ],
   templateUrl: './warehouse-table-section.html',
   styleUrl: './warehouse-table-section.scss',
